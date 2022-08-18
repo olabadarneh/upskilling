@@ -1,0 +1,235 @@
+@font-face {
+	font-family: 'Noto Kufi Arabic';
+	font-style: normal;
+	font-weight: 400;
+	src: url(/upskillingapp/resources/fonts/NotoKufiArabic-Regular.ttf)
+		format('truetype');
+}
+
+@font-face {
+	font-family: 'Noto Kufi Arabic';
+	font-style: normal;
+	font-weight: 700;
+	src: url(/upskillingapp/resources/fonts/NotoKufiArabic-Bold.ttf)
+		format('truetype');
+}
+
+.ui-widget-content {
+	border: 1px solid #082032;
+	background: #000000;
+	color: #FCF8E8;
+}
+
+.ui-widget {
+	font-size: 0.96em;
+	font-family: 'Noto Kufi Arabic', serif;
+}
+
+.ui-widget-header {
+	border: 1px solid #082032;
+	background: #000000;
+	color: #FCF8E8 /*{fcHeader}*/;
+	font-weight: bold;
+}
+
+.ui-state-default {
+	border: 1px solid #082032 /*{borderColorDefault}*/;
+	background: #FCF8E8;
+	font-weight: normal;
+	color: #082032;
+}
+
+.ui-state-default {
+	background: #082032;
+	font-weight: bold;
+	color: #FCF8E8;
+}
+
+.ui-panel-title {
+	margin: 0.1em 0px 0.2em 0;
+}
+
+.ui-growl {
+	right: 50%;
+	margin-right: -150px;
+}
+
+.ui-menuitem-text {
+	color: #FCF8E8;
+}
+
+.ui-menubar {
+	padding-top: 35px;
+	border-color: #000000;
+}
+
+.loginform {
+	border-radius: 3px #FCF8E8;
+}
+
+.ui-menu-en {
+	
+}
+
+.ui-menu-en .ui-menuitem {
+	float: left !important;
+}
+
+.ui-menu-en .ui-menuitem-text {
+	float: left !important;
+}
+
+.ui-menu-en .ui-menu-child {
+	top: 25px;
+	left: 0 !important;
+	width: 20em !important;
+}
+
+.ui-menu-en .ui-menuitem-icon {
+	float: left !important;
+}
+
+.ui-menu-ar {
+	
+}
+
+.ui-menu-ar .ui-menuitem {
+	float: right !important;
+	margin: 5px;
+}
+
+.ui-menu-ar .ui-menuitem-text {
+	float: right !important;
+}
+
+.ui-menu-ar .ui-menu-child {
+	top: 25px;
+	right: 0 !important;
+	width: 20em !important;
+}
+
+.ui-menu-ar .ui-menuitem-icon {
+	float: right !important;
+}
+
+.ui-rating-en {
+	
+}
+
+.ui-rating-en .ui-rating {
+	float: left !important;
+}
+
+.ui-rating-en .ui-rating-text {
+	float: left !important;
+}
+
+.ui-rating-en .ui-rating-child {
+	top: 25px;
+	left: 0 !important;
+	width: 20em !important;
+}
+
+.ui-rating-en .ui-rating-icon {
+	float: left !important;
+}
+
+.ui-rating-ar {
+	
+}
+
+.ui-rating-ar .ui-rating {
+	float: right !important;
+	margin: 5px;
+}
+
+.ui-rating-ar .ui-rating-text {
+	float: right !important;
+}
+
+.ui-rating-ar .ui-rating-child {
+	top: 25px;
+	right: 0 !important;
+	width: 20em !important;
+}
+
+.ui-rating-ar .ui-rating-icon {
+	float: right !important;
+}
+
+.ui-button-text-only {
+	margin: 10px;
+}
+
+.ui-ring-item {
+	text-align: center;
+	display: block;
+	height: 90px;
+}
+
+.ui-ring {
+	height: 300px;
+}
+
+.strtable {
+	height: 200px;
+	width: 100%;
+	text-align: left;
+}
+
+.rowexpen {
+	width: 300px;
+}
+
+.ui-carousel {
+	text-align: left;
+	width: 360px;
+	margin-left: 450px;
+}
+
+.search {
+	text-align: left;
+	padding-bottom: 10px;
+}
+
+.fafooter {
+	color: #8000ff;
+	margin-left: 20px;
+	top: 0px;
+	padding-left: 545px;
+	margin-bottom: 40px;
+}
+
+.fa-facebook:hover {
+	color: #10237c;
+}
+
+.fa-windows:hover {
+	color: #ffffff;
+}
+
+.fa-twitter:hover {
+	color: #1784d5;
+}
+
+.fa-youtube:hover {
+	color: #e01414;
+}
+
+.fa-linkedin:hover {
+	color: #11639f;
+}
+
+.fa-instagram:hover {
+	color: #b6346b;
+}
+
+.footer {
+	padding-left: 589px;
+	color: #FCF8E8;
+}
+
+.footertxt {
+	padding-left: 540px;
+	color: #FCF8E8;
+}

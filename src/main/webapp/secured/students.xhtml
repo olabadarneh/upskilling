@@ -1,0 +1,83 @@
+<ui:composition template="/WEB-INF/template/template.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">
+		<h:outputText value="#{msg.menu_student}" />
+	</ui:define>
+
+	<ui:define name="content">
+		<br />
+
+		<h:form id="form">
+			<p:dataGrid var="std" value="#{mbAddStd.stdTable}" columns="3" layout="grid">
+
+				<f:facet name="header">
+					<p:outputLabel value="#{msg.menu_student}" />
+				</f:facet>
+
+				<p:panel header="#{std.studentID}" style="text-align:center">
+					<h:panelGrid columns="1" style="width:100%">
+
+						<h:outputText value="#{std.studentAname}" />
+
+						<p:commandLink update=":form:stdDetail" oncomplete="PF('stdDialog').show()" title="View Detail">
+							<h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+							<f:setPropertyActionListener value="#{std}" target="#{mbAddStd.student}" />
+						</p:commandLink>
+
+
+					</h:panelGrid>
+				</p:panel>
+			</p:dataGrid>
+
+			<p:dialog header="#{msg.lbl_std_info}" widgetVar="stdDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+				<p:outputPanel id="stdDetail" style="text-align:center;">
+					<p:panelGrid columns="2" rendered="#{not empty mbAddStd.student}" columnClasses="label,value">
+
+						<h:outputText value="#{msg.lbl_uni_ar_name}:" />
+						<h:outputText value="#{mbAddStd.student.studentUniversity.universityAname}" />
+
+						<h:outputText value="#{msg.lbl_school_ar_name}:" />
+						<h:outputText value="#{mbAddStd.student.studentSchool.schoolAname}" />
+
+						<h:outputText value="#{msg.lbl_program_ar_name}:" />
+						<h:outputText value="#{mbAddStd.student.studentProgram.programAname}" />
+
+						<h:outputText value="#{msg.lbl_std_ar_name}:" />
+						<h:outputText value="#{mbAddStd.student.studentAname}" />
+
+						<h:outputText value="#{msg.lbl_std_en_name}:" />
+						<h:outputText value="#{mbAddStd.student.studentEname}" />
+
+						<h:outputText value="#{msg.lbl_phone}:" />
+						<h:outputText value="#{mbAddStd.student.studentPhoneNo}" />
+
+						<h:outputText value="#{msg.lbl_birthdate}:" />
+						<h:outputText value="#{mbAddStd.student.studentBirthDate}" />
+
+						<h:outputText value="#{msg.lbl_email}:" />
+						<h:outputText value="#{mbAddStd.student.studentEmail}" />
+
+						<h:outputText value="#{msg.lbl_sex}:" />
+						<h:outputText value="#{mbAddStd.student.studentSex}" />
+
+						<h:outputText value="#{msg.lbl_final_avg}:" />
+						<h:outputText value="#{mbAddStd.student.studentFinalAverage}" />
+
+						<h:outputText value="#{msg.lbl_max_avg}:" />
+						<h:outputText value="#{mbAddStd.student.studentMaxAverage}" />
+
+						<h:outputText value="#{msg.lbl_rate}:" />
+						<h:outputText value="#{mbAddStd.student.studentRate}" />
+
+						<h:outputText value="#{msg.lbl_graduated_year}:" />
+						<h:outputText value="#{mbAddStd.student.studentGradYear}" />
+
+						<h:outputText value="#{msg.lbl_graduated_semester}:" />
+						<h:outputText value="#{mbAddStd.student.studentGradSum}" />
+					</p:panelGrid>
+				</p:outputPanel>
+			</p:dialog>
+		</h:form>
+	</ui:define>
+</ui:composition>

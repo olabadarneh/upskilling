@@ -1,0 +1,106 @@
+<ui:composition template="/WEB-INF/template/template.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">
+		<h:outputText value="#{msg.menu_add_student}" />
+	</ui:define>
+
+	<ui:define name="content">
+
+		<br />
+		<br />
+
+		<h:form id="AddstdForm">
+
+			<p:growl showDetail="true">
+				<p:autoUpdate />
+			</p:growl>
+
+			<div align="center">
+				<p:panelGrid columns="4">
+
+					<f:facet name="header">
+						<h:outputText value="#{msg.menu_add_student}" />
+					</f:facet>
+
+					<p:outputLabel value="#{msg.lbl_std_id}" for="id" />
+					<p:inputNumber id="id" value="#{mbAddStd.student.studentID}" required="true" requiredMessage="#{msg.msg_required}-{msg.lbl_std_id}"
+						decimalPlaces="0" decimalSeparator=" " thousandSeparator=" " />
+
+					<p:outputLabel value="#{msg.lbl_uni_ar_name}" for="uni" />
+					<p:selectOneMenu id="uni" value="#{mbAddStd.university.universityID}" required="true"
+						requiredMessage="#{msg.msg_required}-#{msg.lbl_uni_ar_name}">
+						<f:selectItem itemLabel="Select One" itemValue="" />
+						<f:selectItems value="#{mbAddStd.universityTable}" var="u" itemLabel="#{u.universityAname}" itemValue="#{u.universityID}" />
+					</p:selectOneMenu>
+
+					<p:outputLabel value="#{msg.lbl_school_ar_name}" for="school" />
+					<p:selectOneMenu id="school" value="#{mbAddStd.school.schoolID}" required="true"
+						requiredMessage="#{msg.msg_required}-#{msg.lbl_school_ar_name}">
+						<f:selectItem itemLabel="Select One" itemValue="" />
+						<f:selectItems value="#{mbAddStd.schoolTable}" var="s" itemLabel="#{s.schoolAname}" itemValue="#{s.schoolID}" />
+					</p:selectOneMenu>
+
+					<p:outputLabel value="#{msg.lbl_program_ar_name}" for="prog" />
+					<p:selectOneMenu id="prog" value="#{mbAddStd.program.programID}" required="true"
+						requiredMessage="#{msg.msg_required}-#{msg.lbl_program_ar_name}">
+						<f:selectItem itemLabel="Select One" itemValue="" />
+						<f:selectItems value="#{mbAddStd.programTable}" var="p" itemLabel="#{p.programAname}" itemValue="#{p.programID}" />
+					</p:selectOneMenu>
+
+					<p:outputLabel value="#{msg.lbl_std_ar_name}" for="stdarname" />
+					<p:inputText id="stdarname" value="#{mbAddStd.student.studentAname}" required="true"
+						requiredMessage="#{msg.msg_required}-#{msg.lbl_std_ar_name}" validatorMessage="#{msg.msg_validator}-#{msg.lbl_std_ar_name}"
+						maxlength="500" />
+
+					<p:outputLabel value="#{msg.lbl_std_en_name}" for="stdenname" />
+					<p:inputText id="stdenname" value="#{mbAddStd.student.studentEname}" required="true"
+						requiredMessage="#{msg.msg_required}-#{msg.lbl_std_en_name}" validatorMessage="#{msg.msg_validator}-#{msg.lbl_std_en_name}"
+						maxlength="500" />
+
+					<p:outputLabel value="#{msg.lbl_phone}" />
+					<p:inputText value="#{mbAddStd.student.studentPhoneNo}" validatorMessage="#{msg.msg_validator}-#{msg.lbl_phone}" maxlength="10">
+						<f:validateRegex pattern="^07[789][0-9]{7}$" />
+					</p:inputText>
+
+					<p:outputLabel value="#{msg.lbl_sex}" />
+					<p:selectOneRadio value="#{mbAddStd.student.studentSex}">
+						<f:selectItem itemLabel="#{msg.menu_male}" itemValue="0" />
+						<f:selectItem itemLabel="#{msg.menu_female}" itemValue="1" />
+					</p:selectOneRadio>
+
+					<p:outputLabel value="#{msg.lbl_birthdate}" />
+					<p:calendar value="#{mbAddStd.student.studentBirthDate}" pattern="dd/MM/yyyy" />
+
+					<p:outputLabel value="#{msg.lbl_email}" />
+					<p:inputText value="#{mbAddStd.student.studentEmail}" validatorMessage="#{msg.msg_validator}-#{msg.lbl_email}">
+						<f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+					</p:inputText>
+
+					<h:outputText value="#{msg.lbl_final_avg}:" />
+					<p:inputText value="#{mbAddStd.student.studentFinalAverage}" />
+
+					<h:outputText value="#{msg.lbl_max_avg}:" />
+					<p:inputText value="#{mbAddStd.student.studentMaxAverage}" />
+
+					<h:outputText value="#{msg.lbl_rate}:" />
+					<p:inputText value="#{mbAddStd.student.studentRate}" />
+
+					<h:outputText value="#{msg.lbl_graduated_year}:" />
+					<p:inputText value="#{mbAddStd.student.studentGradYear}" />
+
+					<h:outputText value="#{msg.lbl_graduated_semester}:" />
+					<p:inputText value="#{mbAddStd.student.studentGradSum}" />
+
+					<f:facet name="footer">
+						<div align="center">
+							<p:commandButton value="#{msg.btn_add}" action="#{mbAddStd.add()}" ajax="false" />
+						</div>
+					</f:facet>
+				</p:panelGrid>
+			</div>
+		</h:form>
+		<br />
+		<br />
+	</ui:define>
+</ui:composition>

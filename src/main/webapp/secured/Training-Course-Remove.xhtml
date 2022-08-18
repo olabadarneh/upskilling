@@ -1,0 +1,57 @@
+<ui:composition template="/WEB-INF/template/template.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">
+		<h:outputText value="#{msg.menu_remove_course}" />
+	</ui:define>
+
+	<ui:define name="content">
+		<br />
+
+		<h:form id="form">
+
+			<h:body>
+
+				<p:panel>
+					<p:dataTable value="#{mbReamoveTrain.traincourseTable}" var="t">
+
+						<f:facet name="header">
+							<p:outputLabel value="#{msg.menu_training_course}" />
+						</f:facet>
+
+						<p:column headerText="#{msg.lbl_course_id}" sortBy="#{t.courseID}">
+							<h:outputText value="#{t.courseID}" />
+						</p:column>
+
+						<p:column headerText="#{msg.lbl_course_ar_name}" sortBy="#{t.courseAname}">
+							<h:outputText value="#{t.courseAname}" />
+						</p:column>
+
+						<p:column headerText="#{msg.lbl_course_en_name}" sortBy="#{t.courseEname}">
+							<h:outputText value="#{t.courseEname}" />
+						</p:column>
+
+						<p:column headerText="#{msg.lbl_course_max_students}" sortBy="#{t.maxStudent}">
+							<h:outputText value="#{t.maxStudent}" />
+						</p:column>
+
+						<p:column headerText="#{msg.lbl_course_shortdesc}" sortBy="#{t.shortDesc}">
+							<h:outputText value="#{t.shortDesc}" />
+						</p:column>
+
+						<p:column headerText="#{msg.lbl_course_detaileddesc}" sortBy="#{t.detailedDesc}">
+							<h:outputText value="#{t.detailedDesc}" />
+						</p:column>
+
+						<p:column headerText="#{msg.lbl_remove}">
+							<p:commandButton value="X" action="#{mbReamoveTrain.remove()}" ajax="false">
+								<f:setPropertyActionListener value="#{t}" target="#{mbReamoveTrain.selectedTrainCour}" />
+							</p:commandButton>
+						</p:column>
+					</p:dataTable>
+				</p:panel>
+
+			</h:body>
+		</h:form>
+	</ui:define>
+</ui:composition>

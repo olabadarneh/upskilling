@@ -1,0 +1,43 @@
+<ui:composition template="/WEB-INF/template/template.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">
+		<h:outputText value="#{msg.menu_remove_school}" />
+	</ui:define>
+
+	<ui:define name="content">
+		<br />
+		<h:form id="form">
+
+			<h:body>
+
+				<p:panel>
+					<p:dataTable value="#{mbRemoveSch.schoolTable}" var="s">
+
+						<f:facet name="header">
+							<p:outputLabel value="#{msg.menu_school}" />
+						</f:facet>
+
+						<p:column headerText="#{msg.lbl_school_id}" sortBy="#{s.schoolID}">
+							<h:outputText value="#{s.schoolID}" />
+						</p:column>
+
+						<p:column headerText="#{msg.lbl_school_ar_name}" sortBy="#{s.schoolAname}">
+							<h:outputText value="#{s.schoolAname}" />
+						</p:column>
+
+						<p:column headerText="#{msg.lbl_school_en_name}" sortBy="#{s.schoolEname}">
+							<h:outputText value="#{s.schoolEname}" />
+						</p:column>
+
+						<p:column headerText="#{msg.lbl_edit}">
+							<p:commandButton value="X" action="#{mbRemoveSch.delete()}" ajax="false">
+								<f:setPropertyActionListener value="#{s}" target="#{mbRemoveSch.selectedSchool}" />
+							</p:commandButton>
+						</p:column>
+					</p:dataTable>
+				</p:panel>
+			</h:body>
+		</h:form>
+	</ui:define>
+</ui:composition>

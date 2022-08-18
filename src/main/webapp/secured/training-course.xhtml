@@ -1,0 +1,58 @@
+<ui:composition template="/WEB-INF/template/template.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">
+		<h:outputText value="#{msg.menu_training_course}" />
+	</ui:define>
+
+	<ui:define name="content">
+
+		<br />
+
+		<h:form id="form">
+
+			<p:panel>
+				<p:dataTable value="#{mbTrainCourse.trainCourseTable}" var="t" filteredValue="#{mbTrainCourse.filtered}" widgetVar="courseTable">
+
+					<f:facet name="header">
+						<p:outputLabel value="#{msg.menu_training_course}" />
+					</f:facet>
+
+					<f:facet name="header">
+						<p:outputPanel styleClass="search">
+							<h:outputText value="#{msg.menu_search_all_fields}:" />
+							<p:inputText id="globalFilter" onkeyup="PF('courseTable').filter()" style="width:150px" placeholder="#{msg.lbl_enter_keyword}" />
+						</p:outputPanel>
+					</f:facet>
+
+
+					<p:column headerText="#{msg.lbl_course_id}" sortBy="#{t.courseID}" width="9%" filterBy="#{t.courseID}" filterMatchMode="contains">
+						<h:outputText value="#{t.courseID}" />
+					</p:column>
+
+					<p:column headerText="#{msg.lbl_course_ar_name}" sortBy="#{t.courseAname}" filterBy="#{t.courseAname}" filterMatchMode="contains">
+						<h:outputText value="#{t.courseAname}" />
+					</p:column>
+
+					<p:column headerText="#{msg.lbl_course_en_name}" sortBy="#{t.courseEname}" filterBy="#{t.courseEname}" filterMatchMode="contains">
+						<h:outputText value="#{t.courseEname}" />
+					</p:column>
+
+					<p:column headerText="#{msg.lbl_course_max_students}" sortBy="#{t.maxStudent}" width="10%" filterBy="#{t.maxStudent}"
+						filterMatchMode="contains">
+						<h:outputText value="#{t.maxStudent}" />
+					</p:column>
+
+					<p:column headerText="#{msg.lbl_course_shortdesc}">
+						<p:inputTextarea value="#{t.shortDesc}" cols="20" />
+					</p:column>
+
+					<p:column headerText="#{msg.lbl_course_detaileddesc}">
+						<p:inputTextarea value="#{t.detailedDesc}" cols="20" />
+					</p:column>
+
+				</p:dataTable>
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,31 @@
+<ui:composition template="/WEB-INF/template/template.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">
+		<h:outputText value="#{msg.menu_remove_student}" />
+	</ui:define>
+
+	<ui:define name="content">
+		<br />
+
+		<h:form id="form">
+			<p:dataGrid var="std" value="#{mbStd.stdTable}" columns="3">
+
+				<f:facet name="header">
+					<p:outputLabel value="#{msg.menu_student}" />
+				</f:facet>
+
+				<p:panel id="pnl" header="#{std.studentID}" style="text-align:center">
+					<h:panelGrid columns="1" style="width:100%">
+
+						<h:outputText value="#{std.studentAname}" />
+
+						<p:commandButton value="X" action="#{mbStd.remove()}" ajax="false">
+							<f:setPropertyActionListener value="#{std}" target="#{mbStd.student}" />
+						</p:commandButton>
+					</h:panelGrid>
+				</p:panel>
+			</p:dataGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,74 @@
+<ui:composition template="/WEB-INF/template/template.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">
+		<h:outputText value="#{msg.menu_edit_program}" />
+	</ui:define>
+
+	<ui:define name="content">
+
+		<br />
+
+		<h:form id="form">
+
+			<h:body>
+
+				<p:panel>
+					<p:dataTable value="#{mbProgDlg.programTable}" var="p">
+
+						<f:facet name="header">
+							<p:outputLabel value="#{msg.menu_program}" />
+						</f:facet>
+
+						<p:column headerText="#{msg.lbl_program_ID}" sortBy="#{p.programID}">
+							<h:outputText value="#{p.programID}" />
+						</p:column>
+
+						<p:column headerText="#{msg.lbl_school_ar_name}" sortBy="#{p.school.schoolAname}">
+							<h:outputText value="#{p.school.schoolAname}" />
+						</p:column>
+
+						<p:column headerText="#{msg.lbl_program_ar_name}" sortBy="#{p.programAname}">
+							<h:outputText value="#{p.programAname}" />
+						</p:column>
+
+						<p:column headerText="#{msg.lbl_program_en_name}" sortBy="#{p.programEname}">
+							<h:outputText value="#{p.programEname}" />
+						</p:column>
+
+						<p:column headerText="#{msg.lbl_edit}">
+							<p:commandButton value="..." update=":form:editPnl" onclick="PF('programDlg').show()">
+								<f:setPropertyActionListener value="#{p}" target="#{mbProgDlg.selectedProgram}" />
+							</p:commandButton>
+						</p:column>
+					</p:dataTable>
+				</p:panel>
+
+				<p:dialog header="#{msg.lbl_edit_program}" widgetVar="programDlg" height="220">
+					<p:panelGrid id="editPnl" columns="2">
+
+						<p:outputLabel value="#{msg.lbl_program_ID}" />
+						<h:inputText value="#{mbProgDlg.selectedProgram.programID}" />
+
+						<p:outputLabel value="#{msg.lbl_school_ar_name}" />
+						<p:selectOneMenu id="school" value="#{mbAddProgram.program.school.schoolID}">
+							<f:selectItem itemLabel="Select One" itemValue="" />
+							<f:selectItems value="#{mbAddProgram.schoolTable}" var="s" itemLabel="#{s.schoolAname}" itemValue="#{s.schoolID}" />
+						</p:selectOneMenu>
+
+						<p:outputLabel value="#{msg.lbl_program_ar_name}" />
+						<h:inputText value="#{mbProgDlg.selectedProgram.programAname}" />
+
+						<p:outputLabel value="#{msg.lbl_program_en_name}" />
+						<h:inputText value="#{mbProgDlg.selectedProgram.programEname}" />
+
+						<f:facet name="footer">
+							<p:commandButton value="#{msg.btn_save}" action="#{mbProgDlg.update()}" ajax="false" />
+							<p:commandButton value="#{msg.btn_back}" onclick="PF('programDlg').hide()" />
+						</f:facet>
+					</p:panelGrid>
+				</p:dialog>
+			</h:body>
+		</h:form>
+	</ui:define>
+</ui:composition>

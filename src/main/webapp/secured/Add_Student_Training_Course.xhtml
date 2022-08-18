@@ -1,0 +1,55 @@
+<ui:composition template="/WEB-INF/template/template.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">
+		<h:outputText value="#{msg.menu_add_student_training_course}" />
+	</ui:define>
+
+	<ui:define name="content">
+		<br />
+		<br />
+		<h:form id="Form">
+
+			<div align="center">
+				<h:form id="add">
+					<p:panelGrid columns="2">
+						<p:outputPanel id="strDetail" style="text-align:left;" layout="block">
+							<p:panelGrid columns="2" rendered="#{not empty mbStdTrainCour.strTable}" columnClasses="value" style="width:100%">
+
+								<h:outputText value="#{msg.lbl_std_ar_name}" />
+								<p:selectOneMenu id="student" value="#{mbStdTrainCour.student.studentID}" required="true"
+									requiredMessage="#{msg.msg_required}-#{msg.lbl_std_en_name}">
+									<f:selectItem itemLabel="Select One" itemValue="" />
+									<f:selectItems value="#{mbStdTrainCour.strTable}" var="s" itemLabel="#{s.student.studentAname}" itemValue="#{s.student.studentID}" />
+								</p:selectOneMenu>
+
+								<h:outputText value="#{msg.lbl_course_ar_name}" />
+								<p:selectOneMenu id="course" value="#{mbStdTrainCour.trainCourse.courseID}" required="true"
+									requiredMessage="#{msg.msg_required}-#{msg.lbl_course_en_name}">
+									<f:selectItem itemLabel="Select One" itemValue="" />
+									<f:selectItems value="#{mbStdTrainCour.strTable}" var="course" itemLabel="#{course.trainingCourseID.courseEname}"
+										itemValue="#{course.trainingCourseID.courseID}" />
+								</p:selectOneMenu>
+
+								<h:outputText value="#{msg.lbl_priority}" />
+								<p:inputText value="#{mbStdTrainCour.selectedSTR.priority}" />
+
+								<h:outputText value="#{msg.lbl_selected_course}" />
+								<p:inputTextarea value="#{mbStdTrainCour.selectedSTR.course}" />
+
+								<f:facet name="footer">
+									<div align="center">
+										<p:commandButton value="#{msg.btn_add}" action="#{mbStdTrainCour.add()}" ajax="false" />
+									</div>
+								</f:facet>
+
+							</p:panelGrid>
+						</p:outputPanel>
+					</p:panelGrid>
+				</h:form>
+			</div>
+		</h:form>
+		<br />
+		<br />
+	</ui:define>
+</ui:composition>

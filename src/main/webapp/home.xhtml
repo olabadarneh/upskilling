@@ -1,0 +1,55 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template/template.xhtml">
+
+	<ui:define name="title">
+		<h:outputText value="#{msg.menu_upskilling_app}" />
+	</ui:define>
+	<ui:define name="content">
+		<br />
+
+		<h2>
+			<h:outputText value="#{msg.lbl_about_the_upskilling}" />
+		</h2>
+		<h:outputText value="#{msg.lbl_text_upskilling}"></h:outputText>
+		<br />
+		<br />
+
+		<div align="center">
+
+			<p:galleria effect="slide" effectDuration="1000">
+
+				<h:graphicImage value="/resources/images/android.png" width="99%" height="440px" />
+
+				<h:graphicImage value="/resources/images/sql_banner.jpg" width="99%" height="440px" />
+
+				<h:graphicImage value="/resources/images/Flutter-App-Developer01.jpg" width="99%" height="440px" />
+
+				<h:graphicImage value="/resources/images/appain-training-110620.png" width="99%" height="440px" />
+
+				<h:graphicImage value="/resources/images/web development tech.png" width="99%" height="440px" />
+
+				<h:graphicImage value="/resources/images/python.png" width="99%" height="440px" />
+
+				<h:graphicImage value="/resources/images/PHP.png" width="99%" height="440px" />
+
+				<h:graphicImage value="/resources/images/Java-Programming.png" width="99%" height="440px" />
+
+				<h:graphicImage value="/resources/images/csharpimage.jpg" width="99%" height="440px" />
+
+				<h:graphicImage value="/resources/images/unity.png" width="99%" height="440px" />
+
+				<h:graphicImage value="/resources/images/linux.jpg" width="99%" height="440px" />
+
+				<h:graphicImage value="/resources/images/data science.jpg" width="99%" height="440px" />
+
+				<h:graphicImage value="/resources/images/data analysis visualization.jpg" width="99%" height="440px" />
+
+				<h:graphicImage value="/resources/images/cyber-security.jpg" width="99%" height="440px" />
+
+				<h:graphicImage value="/resources/images/ccna.png" width="99%" height="440px" />
+
+				<h:graphicImage value="/resources/images/Cloud-computing.jpg" width="99%" height="440px" />
+			</p:galleria>
+		</div>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,66 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+	<h:form id="menuform">
+		<p:menubar styleClass="#{mbSec.lang.equals('ar')?'ui-menu-ar':'ui-menu-en'}">
+
+			<p:menuitem value="#{msg.menu_home}" outcome="/home.xhtml" icon="fa fa-home" />
+
+			<p:submenu label="#{msg.menu_tables}" icon="fa fa-database">
+				<p:menuitem value="#{msg.menu_university}" outcome="/secured/university.xhtml" />
+				<p:menuitem value="#{msg.menu_school}" outcome="/secured/school.xhtml" />
+				<p:menuitem value="#{msg.menu_program}" outcome="/secured/program.xhtml" />
+				<p:menuitem value="#{msg.menu_training_course}" outcome="/secured/training-course.xhtml" />
+				<p:menuitem value="#{msg.menu_student}" outcome="/secured/students.xhtml" />
+				<p:menuitem value="#{msg.menu_student_training_course}" outcome="/secured/student_training_course.xhtml" />
+				<p:menuitem value="#{msg.menu_student_results}" outcome="/secured/student_results.xhtml" />
+				<p:menuitem value="#{msg.menu_interviews}" outcome="/secured/interviews.xhtml" />
+			</p:submenu>
+
+			<p:submenu label="#{msg.menu_add_records}" icon="fa fa-plus">
+				<p:menuitem value="#{msg.menu_add_university}" outcome="/secured/AddUniversity.xhtml" />
+				<p:menuitem value="#{msg.menu_add_school}" outcome="/secured/AddSchool.xhtml" />
+				<p:menuitem value="#{msg.menu_add_program}" outcome="/secured/AddProgram.xhtml" />
+				<p:menuitem value="#{msg.menu_add_course}" outcome="/secured/AddTrainingCourse.xhtml" />
+				<p:menuitem value="#{msg.menu_add_student}" outcome="/secured/AddStudent.xhtml" />
+				<p:menuitem value="#{msg.menu_add_student_training_course}" outcome="/secured/Add_Student_Training_Course.xhtml" />
+				<p:menuitem value="#{msg.menu_add_student_result}" outcome="/secured/Add_Student_Result.xhtml" />
+			</p:submenu>
+
+			<p:submenu label="#{msg.menu_dialog}" icon="fa fa-edit">
+				<p:menuitem value="#{msg.menu_edit_university}" outcome="/secured/UniversityDialog.xhtml" />
+				<p:menuitem value="#{msg.menu_edit_school}" outcome="/secured/SchoolDialog.xhtml" />
+				<p:menuitem value="#{msg.menu_edit_program}" outcome="/secured/ProgramDialog.xhtml" />
+				<p:menuitem value="#{msg.menu_edit_course}" outcome="/secured/TrainingCourseDialog.xhtml" />
+				<p:menuitem value="#{msg.menu_edit_student}" outcome="/secured/StudentDialog.xhtml" />
+				<p:menuitem value="#{msg.menu_edit_student_training_course}" outcome="/secured/Student_Training_Course_Dialog.xhtml" />
+				<p:menuitem value="#{msg.menu_edit_student_result}" outcome="/secured/Student_Result_Dialog.xhtml" />
+			</p:submenu>
+
+			<p:submenu label="#{msg.menu_remove_records}" icon="fa fa-times">
+				<p:menuitem value="#{msg.menu_remove_uni}" outcome="/secured/UniversityRemove.xhtml" />
+				<p:menuitem value="#{msg.menu_remove_school}" outcome="/secured/SchoolRemove.xhtml" />
+				<p:menuitem value="#{msg.menu_remove_program}" outcome="/secured/ProgramRemove.xhtml" />
+				<p:menuitem value="#{msg.menu_remove_course}" outcome="/secured/Training-Course-Remove.xhtml" />
+				<p:menuitem value="#{msg.menu_remove_student}" outcome="/secured/StudentRemove.xhtml" />
+				<p:menuitem value="#{msg.menu_remove_student_training_course}" outcome="/secured/Student_Training_Course_Remove.xhtml" />
+				<p:menuitem value="#{msg.menu_remove_student_result}" outcome="/secured/StudentResultRemove.xhtml" />
+
+			</p:submenu>
+
+			<p:submenu label="#{msg.menu_editable_datatable}" icon="fa fa-pencil">
+				<p:menuitem value="#{msg.menu_edit_school}" outcome="/secured/SchoolEditable.xhtml" />
+			</p:submenu>
+
+			<p:submenu label="#{msg.menu_websites}" icon="fa fa-unlink">
+				<p:menuitem value="Prime Faces" url="https://www.primefaces.org/" target="_blank" />
+				<p:menuitem value="Omni Faces" url="https://omnifaces.org/" target="_blank" />
+				<p:menuitem value="w3schools" url="https://www.w3schools.com/" target="_blank" />
+			</p:submenu>
+
+			<p:menuitem value="#{msg.btn_logout}" action="#{mbSec.logout()}" icon="fa fa-user-times" />
+
+		</p:menubar>
+	</h:form>
+
+</ui:composition>

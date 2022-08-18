@@ -1,0 +1,56 @@
+<ui:composition template="/WEB-INF/template/template.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+
+	<ui:define name="title">
+		<h:outputText value="#{msg.menu_add_course}" />
+	</ui:define>
+
+	<ui:define name="content">
+
+		<br />
+		<br />
+
+		<h:form id="AddtrainForm">
+
+			<p:growl showDetail="true">
+				<p:autoUpdate />
+			</p:growl>
+
+			<div align="center">
+				<p:panelGrid columns="2">
+
+					<f:facet name="header">
+						<h:outputText value="#{msg.menu_add_course}" />
+					</f:facet>
+
+					<p:outputLabel value="#{msg.lbl_course_id}" for="id" />
+					<p:inputNumber id="id" value="#{mbTrainCour.trainingCourse.courseID}" required="true"
+						requiredMessage="#{msg.msg_required}-#{msg.lbl_course_id}" decimalPlaces="0" decimalSeparator=" " thousandSeparator=" " />
+
+					<p:outputLabel value="#{msg.lbl_course_ar_name}" for="tname" />
+					<p:inputText id="tname" value="#{mbTrainCour.trainingCourse.courseAname}" required="true"
+						requiredMessage="#{msg.msg_required}-#{msg.lbl_course_ar_name}" validatorMessage="#{msg.msg_validator}-#{msg.lbl_course_ar_name}"
+						maxlength="500" />
+
+					<p:outputLabel value="#{msg.lbl_course_en_name}" for="tenname" />
+					<p:inputText id="tenname" value="#{mbTrainCour.trainingCourse.courseEname}" required="true"
+						requiredMessage="#{msg.msg_required}-#{msg.lbl_course_en_name}" validatorMessage="#{msg.msg_validator}-#{msg.lbl_course_en_name}"
+						maxlength="500" />
+
+					<p:outputLabel value="#{msg.lbl_course_max_students}" for="maxid" />
+					<p:inputNumber id="maxid" value="#{mbTrainCour.trainingCourse.maxStudent}" required="true"
+						requiredMessage="#{msg.msg_required}-#{msg.lbl_course_max_students}" decimalPlaces="0" decimalSeparator=" " thousandSeparator=" " />
+
+					<f:facet name="footer">
+						<div align="center">
+							<p:commandButton value="#{msg.btn_add}" action="#{mbTrainCour.add()}" ajax="false" />
+						</div>
+					</f:facet>
+				</p:panelGrid>
+			</div>
+		</h:form>
+		<br />
+		<br />
+	</ui:define>
+</ui:composition>

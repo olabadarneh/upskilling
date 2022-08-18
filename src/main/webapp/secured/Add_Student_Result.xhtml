@@ -1,0 +1,71 @@
+<ui:composition template="/WEB-INF/template/template.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">
+		<h:outputText value="#{msg.menu_add_student_result}" />
+	</ui:define>
+
+	<ui:define name="content">
+
+		<br />
+		<br />
+
+		<h:form id="AddstdResForm">
+
+			<p:growl showDetail="true">
+				<p:autoUpdate />
+			</p:growl>
+
+			<div align="center">
+				<p:panelGrid columns="2">
+					<f:facet name="header">
+						<h:outputText value="#{msg.menu_add_student_result}" />
+					</f:facet>
+
+					<h:outputText value="#{msg.lbl_std_ar_name}" />
+					<p:selectOneMenu id="student" value="#{mbStdResult.student.studentID}" required="true"
+						requiredMessage="#{msg.msg_required}-#{msg.lbl_std_ar_name}">
+						<f:selectItem itemLabel="Select One" itemValue="" />
+						<f:selectItems value="#{mbStdResult.stdResTable}" var="s" itemLabel="#{s.studentID.studentAname}" itemValue="#{s.studentID.studentID}" />
+					</p:selectOneMenu>
+
+					<h:outputText value="#{msg.lbl_course_ar_name}" />
+					<p:selectOneMenu id="course" value="#{mbStdResult.trainCourse.courseID}" required="true"
+						requiredMessage="#{msg.msg_required}-#{msg.lbl_course_ar_name}">
+						<f:selectItem itemLabel="Select One" itemValue="" />
+						<f:selectItems value="#{mbStdResult.stdResTable}" var="course" itemLabel="#{course.trainingCourseID.courseAname}"
+							itemValue="#{course.trainingCourseID.courseID}" />
+					</p:selectOneMenu>
+
+					<p:outputLabel value="#{msg.lbl_english_mark}" for="enmark" />
+					<p:inputNumber id="enmark" value="#{mbStdResult.stdResSelected.englishMark}" required="true"
+						requiredMessage="#{msg.msg_required}-#{msg.lbl_english_mark}" validatorMessage="#{msg.msg_validator}-#{msg.lbl_english_mark}"
+						decimalPlaces="0" decimalSeparator=" " thousandSeparator=" " maxValue="100" />
+
+					<p:outputLabel value="#{msg.lbl_interview_mark}" for="inmark" />
+					<p:inputNumber id="inmark" value="#{mbStdResult.stdResSelected.interviewMark}" required="true"
+						requiredMessage="#{msg.msg_required}-#{msg.lbl_interview_mark}" validatorMessage="#{msg.msg_validator}-#{msg.lbl_interview_mark}"
+						maxValue="100" decimalPlaces="0" decimalSeparator=" " thousandSeparator=" " />
+
+					<p:outputLabel value="#{msg.lbl_accepted_flag}" />
+					<p:selectOneRadio value="#{mbStdResult.stdResSelected.acceptedFlag}">
+						<f:selectItem itemLabel="#{msg.menu_acceptable}" itemValue="1" />
+						<f:selectItem itemLabel="#{msg.menu_not_acceptable}" itemValue="0" />
+					</p:selectOneRadio>
+
+					<p:outputLabel value="#{msg.lbl_notes}" for="notes" />
+					<p:inputTextarea id="notes" value="#{mbStdResult.stdResSelected.notes}" required="true"
+						requiredMessage="#{msg.msg_required}-#{msg.lbl_notes}" validatorMessage="#{msg.msg_validator}-#{msg.lbl_notes}" maxlength="2000" />
+
+					<f:facet name="footer">
+						<div align="center">
+							<p:commandButton value="#{msg.btn_add}" action="#{mbStdResult.add()}" ajax="false" />
+						</div>
+					</f:facet>
+				</p:panelGrid>
+			</div>
+		</h:form>
+		<br />
+		<br />
+	</ui:define>
+</ui:composition>

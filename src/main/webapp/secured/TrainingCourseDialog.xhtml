@@ -1,0 +1,67 @@
+<ui:composition template="/WEB-INF/template/template.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">
+		<h:outputText value="#{msg.menu_edit_course}" />
+	</ui:define>
+
+	<ui:define name="content">
+		<br />
+		<h:form id="form">
+
+			<p:panel>
+				<p:dataTable value="#{mbTrainCourDlg.traincourseTable}" var="t">
+
+					<f:facet name="header">
+						<p:outputLabel value="#{msg.menu_training_course}" />
+					</f:facet>
+
+					<p:column headerText="#{msg.lbl_course_id}" sortBy="#{t.courseID}">
+						<h:outputText value="#{t.courseID}" />
+					</p:column>
+
+					<p:column headerText="#{msg.lbl_course_ar_name}" sortBy="#{t.courseAname}">
+						<h:outputText value="#{t.courseAname}" />
+					</p:column>
+
+					<p:column headerText="#{msg.lbl_course_en_name}" sortBy="#{t.courseEname}">
+						<h:outputText value="#{t.courseEname}" />
+					</p:column>
+
+					<p:column headerText="#{msg.lbl_course_max_students}" sortBy="#{t.maxStudent}">
+						<h:outputText value="#{t.maxStudent}" />
+					</p:column>
+
+					<p:column headerText="#{msg.lbl_edit}">
+						<p:commandButton value="..." update=":form:editPnl" onclick="PF('traincourDlg').show()">
+							<f:setPropertyActionListener value="#{t}" target="#{mbTrainCourDlg.selectedTrainCour}" />
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+			</p:panel>
+
+			<p:dialog header="#{msg.lbl_edit_course}" widgetVar="traincourDlg" showEffect="explode" hideEffect="bounce" height="200">
+				<p:panelGrid id="editPnl" columns="2">
+
+					<p:outputLabel value="#{msg.lbl_course_id}" />
+					<h:inputText value="#{mbTrainCourDlg.selectedTrainCour.courseID}" />
+
+					<p:outputLabel value="#{msg.lbl_course_ar_name}" />
+					<h:inputText value="#{mbTrainCourDlg.selectedTrainCour.courseAname}" />
+
+					<p:outputLabel value="#{msg.lbl_course_en_name}" />
+					<h:inputText value="#{mbTrainCourDlg.selectedTrainCour.courseEname}" />
+
+					<p:outputLabel value="#{msg.lbl_course_max_students}" />
+					<h:inputText value="#{mbTrainCourDlg.selectedTrainCour.maxStudent}" />
+
+					<f:facet name="footer">
+						<p:commandButton value="#{msg.btn_save}" action="#{mbTrainCourDlg.update()}" ajax="false" />
+						<p:commandButton value="#{msg.btn_back}" onclick="PF('traincourDlg').hide()" />
+					</f:facet>
+				</p:panelGrid>
+			</p:dialog>
+
+		</h:form>
+	</ui:define>
+</ui:composition>

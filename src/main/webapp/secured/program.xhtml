@@ -1,0 +1,47 @@
+<ui:composition template="/WEB-INF/template/template.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+	
+	<ui:define name="title">
+		<h:outputText value="#{msg.menu_program}" />
+	</ui:define>
+
+	<ui:define name="content">
+
+		<br />
+
+		<h:form id="form">
+			<p:panel>
+				<p:dataTable value="#{mbProgram.programTable}" var="p" filteredValue="#{mbProgram.filtered}" widgetVar="progTable">
+
+					<f:facet name="header">
+						<p:outputLabel value="#{msg.menu_program}" />
+					</f:facet>
+
+					<f:facet name="header">
+						<p:outputPanel styleClass="search">
+							<h:outputText value="#{msg.menu_search_all_fields}:" />
+							<p:inputText id="globalFilter" onkeyup="PF('progTable').filter()" style="width:150px" placeholder="#{msg.lbl_enter_keyword}" />
+						</p:outputPanel>
+					</f:facet>
+
+					<p:column headerText="#{msg.lbl_program_ID}" sortBy="#{p.programID}" filterBy="#{p.programID}" filterMatchMode="contains">
+						<h:outputText value="#{p.programID}" />
+					</p:column>
+
+					<p:column headerText="#{msg.lbl_school_ar_name}" sortBy="#{p.school.schoolAname}" filterBy="#{p.school.schoolAname}"
+						filterMatchMode="contains">
+						<h:outputText value="#{p.school.schoolAname}" />
+					</p:column>
+
+					<p:column headerText="#{msg.lbl_program_ar_name}" sortBy="#{p.programAname}" filterBy="#{p.programAname}" filterMatchMode="contains">
+						<h:outputText value="#{p.programAname}" />
+					</p:column>
+
+					<p:column headerText="#{msg.lbl_program_en_name}" sortBy="#{p.programEname}" filterBy="#{p.programEname}" filterMatchMode="contains">
+						<h:outputText value="#{p.programEname}" />
+					</p:column>
+				</p:dataTable>
+			</p:panel>
+		</h:form>
+	</ui:define>
+</ui:composition>
