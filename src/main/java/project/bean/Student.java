@@ -23,7 +23,7 @@ public class Student {
 
 	public Student(int studentID, String studentAname, String studentEname, String studentPhoneNo,
 			Date studentBirthDate, String studentSex, String studentEmail, double studentFinalAverage,
-			double studentMaxAverage, int studentRate, int studentGradeYear, int studentGradeSum,
+			double studentMaxAverage, int studentRate, int studentGradeYear, int studentGradeSum, String message,
 			University studentUniversity, School studentSchool, Program studentProgram) {
 		this.studentID = studentID;
 		this.studentAname = studentAname;
@@ -37,6 +37,7 @@ public class Student {
 		this.studentRate = studentRate;
 		this.studentGradeYear = studentGradeYear;
 		this.studentGradeSum = studentGradeSum;
+		this.message = message;
 		this.studentUniversity = studentUniversity;
 		this.studentSchool = studentSchool;
 		this.studentProgram = studentProgram;
@@ -152,22 +153,6 @@ public class Student {
 
 	public void setStudentGradSum(int studentGradSum) {
 		this.studentGradeSum = studentGradSum;
-	}
-
-	public University university() {
-		return studentUniversity;
-	}
-
-	public void setStudentUni(University studentUni) {
-		this.studentUniversity = studentUni;
-	}
-
-	public Program getStudentProg() {
-		return studentProgram;
-	}
-
-	public void setStudentProg(Program studentProg) {
-		this.studentProgram = studentProg;
 	}
 
 	public School getStudentSchool() {

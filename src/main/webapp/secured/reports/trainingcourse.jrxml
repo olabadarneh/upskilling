@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.4.3.final using JasperReports Library version 6.4.3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="trainingcourse" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="67753298-fbd6-4a76-8161-01ce1f0777d9">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="ScottXE"/>
+	<parameter name="p_image" class="java.lang.Object"/>
+	<queryString language="SQL">
+		<![CDATA[select course_id  ,course_aname , course_ename , 
+max_students from training_course 
+order by course_id]]>
+	</queryString>
+	<field name="COURSE_ID" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="COURSE_ID"/>
+	</field>
+	<field name="COURSE_ANAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="COURSE_ANAME"/>
+	</field>
+	<field name="COURSE_ENAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="COURSE_ENAME"/>
+	</field>
+	<field name="MAX_STUDENTS" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="MAX_STUDENTS"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="182" y="10" width="190" height="51" uuid="cd69c573-f151-4f6e-9f71-ca3c4ae608ce"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="19" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Student Courses]]></text>
+			</staticText>
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement x="0" y="0" width="110" height="79" uuid="49349951-cbf4-42d0-93f8-faa823a394e7"/>
+				<imageExpression><![CDATA["C:/Users/user/Desktop/Reports Images/traincourse.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="141" height="30" forecolor="#C21010" uuid="340ba5a9-2c75-483c-9fcb-926f9256a5bd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="baa3f58a-932a-4626-bb2e-c96a74c50b66"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#357C3C"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[COURSE_ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="141" y="0" width="138" height="30" forecolor="#C21010" uuid="9036875e-9fe0-4943-9c3b-a756991ce456">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="807dff2d-e4b6-4a91-a672-c70f482fa6ea"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#357C3C"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[COURSE_ANAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="279" y="0" width="138" height="30" forecolor="#C21010" uuid="4a50b91a-18b6-46f7-9a34-757a3e43dc5d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f0be067b-ad42-463e-a73d-6a6241078e6b"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#357C3C"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[COURSE_ENAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="0" width="138" height="30" forecolor="#C21010" uuid="4ec9b111-2414-433c-ada5-1e30e4b6c745">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fe6516f1-92ba-4614-8782-e241b268f6ea"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#357C3C"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[MAX_STUDENTS]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="141" height="30" forecolor="#357C3C" uuid="e55f1496-5fa6-4d9b-aca6-8e92889811c5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="baa3f58a-932a-4626-bb2e-c96a74c50b66"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#357C3C"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{COURSE_ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="141" y="0" width="138" height="30" forecolor="#357C3C" uuid="1f7249ac-0fc9-47d0-a377-beaf1f33107d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="807dff2d-e4b6-4a91-a672-c70f482fa6ea"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#357C3C"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{COURSE_ANAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="279" y="0" width="138" height="30" forecolor="#357C3C" uuid="b4912892-a668-4b6a-85a3-48199f3d8a23">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f0be067b-ad42-463e-a73d-6a6241078e6b"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#357C3C"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{COURSE_ENAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="417" y="0" width="138" height="30" forecolor="#357C3C" uuid="8e44ab46-359d-454f-b86b-fe74e3b7995b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fe6516f1-92ba-4614-8782-e241b268f6ea"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#357C3C"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{MAX_STUDENTS}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

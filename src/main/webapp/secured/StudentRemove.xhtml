@@ -18,7 +18,7 @@
 				<p:panel id="pnl" header="#{std.studentID}" style="text-align:center">
 					<h:panelGrid columns="1" style="width:100%">
 
-						<h:outputText value="#{std.studentAname}" />
+						<h:outputText value="#{mbSec.lang.equals('en')? std.studentEname : std.studentAname}" />
 
 						<p:commandButton value="X" action="#{mbStd.remove()}" ajax="false">
 							<f:setPropertyActionListener value="#{std}" target="#{mbStd.student}" />

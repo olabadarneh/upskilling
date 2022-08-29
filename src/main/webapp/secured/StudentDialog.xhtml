@@ -18,11 +18,11 @@
 				<p:panel header="#{std.studentID}" style="text-align:center">
 					<h:panelGrid columns="1" style="width:100%">
 
-						<h:outputText value="#{std.studentAname}" />
+						<h:outputText value="#{mbSec.lang.equals('en')? std.studentEname : std.studentAname}" />
 
 
 						<p:commandButton value="..." update=":form:editPnl" onclick="PF('stdDlg').show()">
-							<f:setPropertyActionListener value="#{std}" target="#{mbAddStd.student}" />
+							<f:setPropertyActionListener value="#{std}" target="#{mbStd.std}" />
 						</p:commandButton>
 					</h:panelGrid>
 				</p:panel>
@@ -30,60 +30,63 @@
 
 			<p:dialog header="#{msg.lbl_edit_std}" widgetVar="stdDlg" height="290">
 
-				<p:panelGrid id="editPnl" columns="2" rendered="#{not empty mbAddStd.student}" columnClasses="label,value">
+				<p:panelGrid id="editPnl" columns="2" rendered="#{not empty mbStd.std}" columnClasses="label,value">
 
-					<h:outputText value="#{msg.lbl_uni_ar_name}:" />
-					<p:selectOneMenu id="uni" value="#{mbAddStd.university.universityAname}">
+					<h:outputText value="#{msg.lbl_university_name}:" />
+					<p:selectOneMenu id="uni"
+						value="#{mbSec.lang.equals('en')? mbStd.std.studentUniversity.universityEname : mbStd.std.studentUniversity.universityAname}">
 						<f:selectItem itemLabel="Select One" itemValue="" />
-						<f:selectItems value="#{mbStd.stdTable}" var="u" itemLabel="#{u.studentUniversity.universityAname}"
+						<f:selectItems value="#{mbStd.stdTable}" var="u"
+							itemLabel="#{mbSec.lang.equals('en')? u.studentUniversity.universityEname: u.studentUniversity.universityAname}"
 							itemValue="#{u.studentUniversity.universityID}" />
 					</p:selectOneMenu>
 
-					<p:outputLabel value="#{msg.lbl_school_ar_name}" />
-					<p:selectOneMenu id="school" value="#{mbAddStd.school.schoolAname}">
+					<p:outputLabel value="#{msg.lbl_school_name}" />
+					<p:selectOneMenu id="school" value="#{mbSec.lang.equals('en')?mbStd.std.studentSchool.schoolEname:mbStd.std.studentSchool.schoolAname}">
 						<f:selectItem itemLabel="Select One" itemValue="" />
-						<f:selectItems value="#{mbStd.stdTable}" var="s" itemLabel="#{s.studentSchool.schoolAname}" itemValue="#{s.studentSchool.schoolID}" />
+						<f:selectItems value="#{mbStd.stdTable}" var="s"
+							itemLabel="#{mbSec.lang.equals('en')? s.studentSchool.schoolEname: s.studentSchool.schoolAname}"
+							itemValue="#{s.studentSchool.schoolID}" />
 					</p:selectOneMenu>
 
-					<p:outputLabel value="#{msg.lbl_program_ar_name}" />
-					<p:selectOneMenu id="prog" value="#{mbAddStd.program.programAname}">
+					<p:outputLabel value="#{msg.lbl_program_name}" />
+					<p:selectOneMenu id="prog"
+						value="#{mbSec.lang.equals('en')? mbStd.std.studentProgram.programEname: mbStd.std.studentProgram.programAname}">
 						<f:selectItem itemLabel="Select One" itemValue="" />
-						<f:selectItems value="#{mbStd.stdTable}" var="p" itemLabel="#{p.studentProgram.programAname}"
+						<f:selectItems value="#{mbStd.stdTable}" var="p"
+							itemLabel="#{mbSec.lang.equals('en')? p.studentProgram.programEname: p.studentProgram.programAname}"
 							itemValue="#{p.studentProgram.programID}" />
 					</p:selectOneMenu>
 
-					<h:outputText value="#{msg.lbl_std_ar_name}:" />
-					<p:inputText value="#{mbAddStd.student.studentAname}" />
-
-					<h:outputText value="#{msg.lbl_std_en_name}:" />
-					<p:inputText value="#{mbAddStd.student.studentEname}" />
+					<h:outputText value="#{msg.lbl_student_name}:" />
+					<p:inputText value="#{mbSec.lang.equals('en')? mbStd.std.studentEname : mbAStd.std.studentAname}" />
 
 					<h:outputText value="#{msg.lbl_phone}:" />
-					<p:inputText value="#{mbAddStd.student.studentPhoneNo}" />
+					<p:inputText value="#{mbStd.std.studentPhoneNo}" />
 
 					<h:outputText value="#{msg.lbl_birthdate}:" />
-					<p:calendar value="#{mbAddStd.student.studentBirthDate}" />
+					<p:calendar value="#{mbStd.std.studentBirthDate}" />
 
 					<h:outputText value="#{msg.lbl_email}:" />
-					<p:inputText value="#{mbAddStd.student.studentEmail}" />
+					<p:inputText value="#{mbStd.std.studentEmail}" />
 
 					<h:outputText value="#{msg.lbl_sex}:" />
-					<p:inputText value="#{mbAddStd.student.studentSex}" />
+					<p:inputText value="#{mbStd.std.studentSex}" />
 
 					<h:outputText value="#{msg.lbl_final_avg}:" />
-					<p:inputText value="#{mbAddStd.student.studentFinalAverage}" />
+					<p:inputText value="#{mbStd.std.studentFinalAverage}" />
 
 					<h:outputText value="#{msg.lbl_max_avg}:" />
-					<p:inputText value="#{mbAddStd.student.studentMaxAverage}" />
+					<p:inputText value="#{mbStd.std.studentMaxAverage}" />
 
 					<h:outputText value="#{msg.lbl_rate}:" />
-					<p:inputText value="#{mbAddStd.student.studentRate}" />
+					<p:inputText value="#{mbStd.std.studentRate}" />
 
 					<h:outputText value="#{msg.lbl_graduated_year}:" />
-					<p:inputText value="#{mbAddStd.student.studentGradYear}" />
+					<p:inputText value="#{mbStd.std.studentGradYear}" />
 
 					<h:outputText value="#{msg.lbl_graduated_semester}:" />
-					<p:inputText value="#{mbAddStd.student.studentGradSum}" />
+					<p:inputText value="#{mbStd.std.studentGradSum}" />
 
 					<f:facet name="footer">
 						<p:commandButton value="#{msg.btn_save}" action="#{mbStd.update()}" ajax="false" />

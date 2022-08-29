@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
@@ -27,12 +28,12 @@ public class Database {
 		}
 	}
 
-//  public Connection getConnection() throws Exception {
-//      Connection connection = DriverManager.getConnection(
-//              "jdbc:oracle:thin:@localhost:1521:xe", "scott", "tiger");
+//	public Connection getConnection() throws Exception {
+//		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "scott", "tiger");
 //
-//      return connection;
-//  }
+//		return connection;
+//	}
+
 	public static void close(ResultSet rs) {
 		try {
 			rs.close();

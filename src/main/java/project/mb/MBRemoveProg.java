@@ -23,7 +23,7 @@ public class MBRemoveProg {
 	}
 
 	public String remove() {
-		ProgramDAO programDAO = new ProgramDAO();
+		programDAO = new ProgramDAO();
 		programDAO.delete(selectedProgram.getProgramID());
 		programTable = programDAO.selectAll();
 		Message.addMessageByKey("INFO", " ", "msg_remove");

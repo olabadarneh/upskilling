@@ -12,11 +12,11 @@
 				<p:outputPanel>
             #{str.student.studentID}
             <br />
-            #{str.student.studentAname}
+            #{mbSec.lang.equals('en')? str.student.studentEname: str.student.studentAname}
             <br />
 
 					<p:commandButton value="X" action="#{mbStdTrainCour.remove()}" ajax="false">
-						<f:setPropertyActionListener value="#{std}" target="#{mbStdTrainCour.selectedSTR}" />
+						<f:setPropertyActionListener value="#{str}" target="#{mbStdTrainCour.selectedSTR}" />
 					</p:commandButton>
 				</p:outputPanel>
 			</p:ring>

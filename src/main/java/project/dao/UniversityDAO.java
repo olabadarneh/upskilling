@@ -58,7 +58,6 @@ public class UniversityDAO {
 				university = new University(rs.getInt("university_id"), rs.getString("university_aname"),
 						rs.getString("university_ename"));
 			}
-			System.out.println("Uni Dao = " + university);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -69,16 +68,47 @@ public class UniversityDAO {
 		return university;
 	}
 
+	///////////////////////////////////////////////////////////////////////////////////////
+
+	public int selectMaxID() {
+
+		try {
+			db = new Database();
+			connection = db.getConnection();
+			ps = connection.prepareStatement("select nvl (max(UNIVERSITY_ID),0) AS UNIVERSITY_ID from UNIVERSITY ");
+			rs = ps.executeQuery();
+
+			if (rs.next()) {
+				return rs.getInt("UNIVERSITY_ID");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			Database.close(rs);
+			Database.close(ps);
+			Database.close(connection);
+		}
+
+		return 0;
+
+	}
+
 	/////////////////////////////////////////////////////////////////////////////
 
 	public int insert(University university) {
+
+		int maxId = selectMaxID();
+		System.out.println(maxId);
+
 		try {
 			db = new Database();
 			connection = db.getConnection();
 			ps = connection.prepareStatement(
 					"insert into university(university_id, university_aname, university_ename,website) values(?, ?, ?, ?)");
 			int counter = 1;
-			ps.setInt(counter++, university.getUniversityID());
+			// ps.setInt(counter++, university.getUniversityID());
+			ps.setInt(counter++, maxId + 1);
 			ps.setString(counter++, university.getUniversityAname());
 			ps.setString(counter++, university.getUniversityEname());
 			ps.setString(counter++, university.getWebsite());

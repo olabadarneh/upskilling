@@ -1,18 +1,23 @@
 package project.mb;
 
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.imageio.ImageIO;
 
 import project.bean.University;
 import project.dao.UniversityDAO;
+import project.report.Report;
 
 @ViewScoped
 @ManagedBean(name = "mbUniversity")
@@ -53,6 +58,18 @@ public class MBUniversity {
 		return filter(filtered, "", locale);
 	}
 
+	public String runUniReport() throws Exception {
+
+		Map<String, Object> parmeter = new HashMap<String, Object>();
+
+		BufferedImage image = ImageIO.read(getClass().getResourceAsStream("/images/upSilling Universities.png"));
+		parmeter.put("p_image", image);
+
+		Report report = new Report();
+		report.runPdf("university.jasper", parmeter);
+		return null;
+
+	}
 ///////////////////////// Getter & Setters /////////////////////////////////////////
 
 	public List<University> getUniversityTable() {

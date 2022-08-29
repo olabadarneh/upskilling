@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.4.3.final using JasperReports Library version 6.4.3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="university" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4c927d2d-778f-49f2-94ba-d2eb57e573e9">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="ScottXE"/>
+	<parameter name="p_image" class="java.lang.Object"/>
+	<queryString language="SQL">
+		<![CDATA[select university_id , university_aname ,university_ename ,
+website from university order by university_id]]>
+	</queryString>
+	<field name="UNIVERSITY_ID" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="UNIVERSITY_ID"/>
+	</field>
+	<field name="UNIVERSITY_ANAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="UNIVERSITY_ANAME"/>
+	</field>
+	<field name="UNIVERSITY_ENAME" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="UNIVERSITY_ENAME"/>
+	</field>
+	<field name="WEBSITE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="WEBSITE"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="81" splitType="Stretch">
+			<staticText>
+				<reportElement x="217" y="20" width="121" height="41" uuid="f18c93e3-982f-4e1f-b661-668393aa04d8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="19" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Universities]]></text>
+			</staticText>
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement x="0" y="0" width="111" height="81" uuid="cffb78c9-e2c1-4c57-ac95-ac4fcdde2b00"/>
+				<imageExpression><![CDATA["C:/Users/user/Desktop/Reports Images/upSilling Universities.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="141" height="30" forecolor="#C21010" uuid="386eb627-30f4-4c81-b631-a6f26eeba5a3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="24459bdf-32ee-4a06-a4aa-e3d9ad4ba513"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#357C3C"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[UNIVERSITY_ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="141" y="0" width="138" height="30" forecolor="#C21010" uuid="fbcb0255-d343-416f-ac9c-ec2495146ce0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9ea5f198-32b3-4def-9f83-5edab3db4305"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#357C3C"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[UNIVERSITY_ANAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="279" y="0" width="138" height="30" forecolor="#C21010" uuid="2cbfef09-446a-4471-886b-0b162491410e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b107540d-74bf-479f-93a2-fe06abe60918"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#357C3C"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[UNIVERSITY_ENAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="417" y="0" width="138" height="30" forecolor="#C21010" uuid="c1f74a32-bdbc-450b-9153-1045b5a63138">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b92b0286-50aa-487e-bf7d-ea12208c83fa"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#357C3C"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[WEBSITE]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="141" height="30" forecolor="#357C3C" uuid="22fe0db8-7f8e-4f03-be4c-1f7142e41692">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="24459bdf-32ee-4a06-a4aa-e3d9ad4ba513"/>
+				</reportElement>
+				<box>
+					<pen lineColor="#357C3C"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{UNIVERSITY_ID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="141" y="0" width="138" height="30" forecolor="#357C3C" uuid="9d545b5e-b295-41cc-8088-0f265be3d21a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="9ea5f198-32b3-4def-9f83-5edab3db4305"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{UNIVERSITY_ANAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="279" y="0" width="138" height="30" forecolor="#357C3C" uuid="14930c84-a146-41fe-a972-367d37f1e83e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b107540d-74bf-479f-93a2-fe06abe60918"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{UNIVERSITY_ENAME}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="417" y="0" width="138" height="30" forecolor="#357C3C" uuid="3186bfc7-d99f-4835-8fa5-45d6c7c1da9d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b92b0286-50aa-487e-bf7d-ea12208c83fa"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#357C3C"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{WEBSITE}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

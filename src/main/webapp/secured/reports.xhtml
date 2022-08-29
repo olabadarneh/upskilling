@@ -1,0 +1,37 @@
+<ui:composition template="/WEB-INF/template/template.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">
+		<h:outputText value="#{msg.menu_reports}" />
+	</ui:define>
+
+	<ui:define name="content">
+
+		<br />
+		<br />
+
+		<h:form id="reportform">
+			<div align="center">
+				<p:commandButton value="#{msg.menu_university_reports}" action="#{mbUniversity.runUniReport()}" ajax="false" />
+
+				<p:commandButton value="#{msg.menu_school_report} " action="#{mbSchool.runSchoolReport()}" ajax="false" />
+
+				<br /> <br />
+
+				<p:commandButton value="#{msg.menu_training_course_report}" action="#{mbTrainCourse.runCourseReport()}" ajax="false" />
+
+				<br /> <br />
+
+				<p:commandButton value="#{msg.menu_program_report}" action="#{mbProgram.runProgramReport()}" ajax="false" />
+
+				<p:commandButton value="#{msg.menu_student_report}" action="#{mbAddStd.runStudentsReport()}" ajax="false" />
+
+				<br />
+
+			</div>
+
+		</h:form>
+		<br />
+		<br />
+	</ui:define>
+</ui:composition>

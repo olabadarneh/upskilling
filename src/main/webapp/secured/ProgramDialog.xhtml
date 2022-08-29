@@ -20,20 +20,13 @@
 							<p:outputLabel value="#{msg.menu_program}" />
 						</f:facet>
 
-						<p:column headerText="#{msg.lbl_program_ID}" sortBy="#{p.programID}">
-							<h:outputText value="#{p.programID}" />
+						<p:column headerText="#{msg.lbl_school_name}" sortBy="#{mbSec.lang.equals('en')? p.school.schoolEname : p.school.schoolAname}">
+							<h:outputText value="#{mbSec.lang.equals('en')? p.school.schoolEname : p.school.schoolAname}"
+								sortBy="#{mbSec.lang.equals('en')? p.school.schoolEname : p.school.schoolAname}" />
 						</p:column>
 
-						<p:column headerText="#{msg.lbl_school_ar_name}" sortBy="#{p.school.schoolAname}">
-							<h:outputText value="#{p.school.schoolAname}" />
-						</p:column>
-
-						<p:column headerText="#{msg.lbl_program_ar_name}" sortBy="#{p.programAname}">
-							<h:outputText value="#{p.programAname}" />
-						</p:column>
-
-						<p:column headerText="#{msg.lbl_program_en_name}" sortBy="#{p.programEname}">
-							<h:outputText value="#{p.programEname}" />
+						<p:column headerText="#{msg.lbl_program_name}" sortBy="#{mbSec.lang.equals('en')? p.programEname : p.programAname}">
+							<h:outputText value="#{mbSec.lang.equals('en')? p.programEname : p.programAname}" />
 						</p:column>
 
 						<p:column headerText="#{msg.lbl_edit}">
@@ -44,23 +37,19 @@
 					</p:dataTable>
 				</p:panel>
 
-				<p:dialog header="#{msg.lbl_edit_program}" widgetVar="programDlg" height="220">
+				<p:dialog header="#{msg.lbl_edit_program}" widgetVar="programDlg" height="200">
 					<p:panelGrid id="editPnl" columns="2">
 
-						<p:outputLabel value="#{msg.lbl_program_ID}" />
-						<h:inputText value="#{mbProgDlg.selectedProgram.programID}" />
-
-						<p:outputLabel value="#{msg.lbl_school_ar_name}" />
+						<p:outputLabel value="#{msg.lbl_school_name}" />
 						<p:selectOneMenu id="school" value="#{mbAddProgram.program.school.schoolID}">
 							<f:selectItem itemLabel="Select One" itemValue="" />
-							<f:selectItems value="#{mbAddProgram.schoolTable}" var="s" itemLabel="#{s.schoolAname}" itemValue="#{s.schoolID}" />
+							<f:selectItems value="#{mbAddProgram.schoolTable}" var="s" itemLabel="#{mbSec.lang.equals('en')? s.schoolEname : s.schoolAname}"
+								itemValue="#{s.schoolID}" />
 						</p:selectOneMenu>
 
-						<p:outputLabel value="#{msg.lbl_program_ar_name}" />
-						<h:inputText value="#{mbProgDlg.selectedProgram.programAname}" />
+						<p:outputLabel value="#{msg.lbl_program_name}" />
+						<h:inputText value="#{mbSec.lang.equals('en')? mbProgDlg.selectedProgram.programEname : mbProgDlg.selectedProgram.programAname}" />
 
-						<p:outputLabel value="#{msg.lbl_program_en_name}" />
-						<h:inputText value="#{mbProgDlg.selectedProgram.programEname}" />
 
 						<f:facet name="footer">
 							<p:commandButton value="#{msg.btn_save}" action="#{mbProgDlg.update()}" ajax="false" />

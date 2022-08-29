@@ -31,12 +31,9 @@
 						<h:outputText value="#{s.schoolID}" />
 					</p:column>
 
-					<p:column headerText="#{msg.lbl_school_ar_name}" sortBy="#{s.schoolAname}" filterBy="#{s.schoolAname}" filterMatchMode="contains">
-						<h:outputText value="#{s.schoolAname}" />
-					</p:column>
-
-					<p:column headerText="#{msg.lbl_school_en_name}" sortBy="#{s.schoolEname}" filterBy="#{s.schoolEname}" filterMatchMode="contains">
-						<h:outputText value="#{s.schoolEname}" />
+					<p:column headerText="#{msg.lbl_school_name}" sortBy="#{mbSec.lang.equals('en') ? s.schoolEname : s.schoolAname}"
+						filterBy="#{mbSec.lang.equals('en') ? s.schoolEname : s.schoolAname}" filterMatchMode="contains">
+						<h:outputText value="#{mbSec.lang.equals('en') ? s.schoolEname : s.schoolAname}" />
 					</p:column>
 				</p:dataTable>
 			</p:panel>

@@ -28,12 +28,10 @@
 						<h:outputText value="#{u.universityID}" />
 					</p:column>
 
-					<p:column headerText="#{msg.lbl_uni_ar_name}" sortBy="#{u.universityAname}" filterBy="#{u.universityAname}" filterMatchMode="contains">
-						<h:outputText value="#{u.universityAname}" />
-					</p:column>
-
-					<p:column headerText="#{msg.lbl_uni_en_name}" sortBy="#{u.universityEname}" filterBy="#{u.universityEname}" filterMatchMode="contains">
-						<h:outputText value="#{u.universityEname}" />
+					<p:column headerText="#{msg.lbl_university_name}" sortBy="#{mbSec.lang.equals('en') ? u.universityEname : u.universityAname}"
+						filterBy="#{mbSec.lang.equals('en') ? u.universityEname : u.universityAname}" filterMatchMode="contains">
+						<h:outputText value="#{mbSec.lang.equals('en') ? u.universityEname : u.universityAname}"
+							sortBy="#{mbSec.lang.equals('en') ? u.universityEname : u.universityAname}" />
 					</p:column>
 
 					<p:column headerText="#{msg.lbl_uni_website}" sortBy="#{u.website}" filterBy="#{u.website}" filterMatchMode="contains">

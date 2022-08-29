@@ -43,14 +43,14 @@ public class StudentDAO {
 				student.setStudentRate(rs.getInt("rate"));
 				student.setStudentGradYear(rs.getInt("graduate_year"));
 				student.setStudentGradSum(rs.getInt("graduate_sum"));
-				student.setStudentEmail(rs.getString("message"));
+				student.setMessage(rs.getString("message"));
 
 				UniversityDAO universitydao = new UniversityDAO();
-				student.setStudentUni(universitydao.selectById(rs.getInt("university_id")));
+				student.setStudentUniversity(universitydao.selectById(rs.getInt("university_id")));
 				SchoolDAO schooldao = new SchoolDAO();
 				student.setStudentSchool(schooldao.selectById(rs.getInt("school_id")));
 				ProgramDAO programdao = new ProgramDAO();
-				student.setStudentProg(programdao.selectById(rs.getInt("program_id")));
+				student.setStudentProgram(programdao.selectById(rs.getInt("program_id")));
 
 				studentTable.add(student);
 			}
@@ -73,7 +73,7 @@ public class StudentDAO {
 			connection = db.getConnection();
 			ps = connection.prepareStatement(
 					"select  student_id, student_aname, student_ename, mobile, birthdate, sex, email, final_average, max_average ,"
-							+ " rate, graduate_year, graduate_sum, university_id, school_id, program_id from student where student_id = ?");
+							+ " rate, graduate_year, graduate_sum, university_id, school_id, program_id,message from student where student_id = ?");
 			ps.setInt(1, id);
 			rs = ps.executeQuery();
 			if (rs.next()) {
@@ -87,13 +87,14 @@ public class StudentDAO {
 				student.setStudentRate(rs.getInt("rate"));
 				student.setStudentGradYear(rs.getInt("graduate_year"));
 				student.setStudentGradSum(rs.getInt("graduate_sum"));
+				student.setMessage(rs.getString("message"));
 
 				UniversityDAO universitydao = new UniversityDAO();
-				student.setStudentUni(universitydao.selectById(rs.getInt("university_id")));
+				student.setStudentUniversity(universitydao.selectById(rs.getInt("university_id")));
 				SchoolDAO schooldao = new SchoolDAO();
 				student.setStudentSchool(schooldao.selectById(rs.getInt("school_id")));
 				ProgramDAO programdao = new ProgramDAO();
-				student.setStudentProg(programdao.selectById(rs.getInt("program_id")));
+				student.setStudentProgram(programdao.selectById(rs.getInt("program_id")));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -129,16 +130,46 @@ public class StudentDAO {
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////
+	public int selectMaxID() {
+
+		try {
+			db = new Database();
+			connection = db.getConnection();
+			ps = connection.prepareStatement("select nvl (max(STUDENT_ID),0) AS STUDENT_ID from STUDENT ");
+			rs = ps.executeQuery();
+
+			if (rs.next()) {
+				return rs.getInt("STUDENT_ID");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			Database.close(rs);
+			Database.close(ps);
+			Database.close(connection);
+		}
+
+		return 0;
+
+	}
+
+	///////////////////////////////////////////////////////////////////////////////////////
 
 	public int insert(Student student) {
+
+		int maxId = selectMaxID();
+		System.out.println(maxId);
+
 		try {
 			db = new Database();
 			connection = db.getConnection();
 			ps = connection.prepareStatement(
-					"insert into student ( student_id, student_aname, student_ename, mobile, birthdate, sex, email, final_average, max_average , rate, graduate_year, graduate_sum, university_id, school_id, program_id)"
+					"insert into student ( student_id, student_aname, student_ename, mobile, birthdate, sex, email, final_average, max_average , rate, graduate_year, graduate_sum ,university_id, school_id, program_id)"
 							+ " values(?, ?, ?, ?,?,?,?,?,?,?,?,?,?,?,?)");
 			int counter = 1;
-			ps.setInt(counter++, student.getStudentID());
+			// ps.setInt(counter++, student.getStudentID());
+			ps.setInt(counter++, maxId + 1);
 			ps.setString(counter++, student.getStudentAname());
 			ps.setString(counter++, student.getStudentEname());
 			ps.setString(counter++, student.getStudentPhoneNo());
@@ -150,10 +181,9 @@ public class StudentDAO {
 			ps.setInt(counter++, student.getStudentRate());
 			ps.setInt(counter++, student.getStudentGradYear());
 			ps.setInt(counter++, student.getStudentGradSum());
-			ps.setString(counter++, student.getMessage());
 			ps.setInt(counter++, student.getStudentUniversity().getUniversityID());
 			ps.setInt(counter++, student.getStudentSchool().getSchoolID());
-			ps.setInt(counter++, student.getStudentProg().getProgramID());
+			ps.setInt(counter++, student.getStudentProgram().getProgramID());
 			row = ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -188,7 +218,7 @@ public class StudentDAO {
 			ps.setInt(counter++, student.getStudentGradSum());
 			ps.setInt(counter++, student.getStudentUniversity().getUniversityID());
 			ps.setInt(counter++, student.getStudentSchool().getSchoolID());
-			ps.setInt(counter++, student.getStudentProg().getProgramID());
+			ps.setInt(counter++, student.getStudentProgram().getProgramID());
 			ps.setInt(counter++, student.getStudentID());
 			row = ps.executeUpdate();
 		} catch (Exception e) {

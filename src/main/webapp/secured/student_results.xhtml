@@ -13,15 +13,16 @@
 				itemStyle="width:200px;height:200px;text-align:center" numVisible="1" easing="easeOutBounce" cricular="true">
 				<h:panelGrid columns="2" style="width:100%" columnClasses="label,value">
 
-					<h:outputText value="#{msg.lbl_std_ar_name}" />
-					<h:outputText value="#{strRes.studentID.studentAname}" />
 
-					<h:outputText value="#{msg.lbl_course_ar_name}" />
-					<h:outputText value="#{strRes.trainingCourseID.courseAname}" />
+					<h:outputText value="#{msg.lbl_student_name}" />
+					<h:outputText value="#{mbSec.lang.equals('en')? strRes.studentID.studentEname: strRes.studentID.studentAname}" />
+
+					<h:outputText value="#{msg.lbl_training_course_name}" />
+					<h:outputText value="#{mbSec.lang.equals('en')? strRes.trainingCourseID.courseEname : strRes.trainingCourseID.courseAname}" />
 
 					<f:facet name="footer">
 						<p:commandButton update=":form:stdResDetail" oncomplete="PF('stdResDialog').show()" icon="ui-icon-search" style="margin-top:35px">
-							<f:setPropertyActionListener value="#{strRes}" target="#{mbStdResult.stdResSelected}" />
+							<f:setPropertyActionListener value="#{strRes}" target="#{mbStdResult.stdRes}" />
 						</p:commandButton>
 					</f:facet>
 				</h:panelGrid>
@@ -29,25 +30,27 @@
 
 			<p:dialog header="Student Result Info" widgetVar="stdResDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
 				<p:outputPanel id="stdResDetail" style="text-align:center;">
-					<p:panelGrid columns="2" rendered="#{not empty mbStdResult.stdResSelected}" columnClasses="label,value">
+					<p:panelGrid columns="2" rendered="#{not empty mbStdResult.stdRes}" columnClasses="label,value">
 
-						<h:outputText value="#{msg.lbl_std_ar_name}" />
-						<h:outputText value="#{mbStdResult.stdResSelected.studentID.studentAname}" />
 
-						<h:outputText value="#{msg.lbl_course_ar_name}" />
-						<h:outputText value="#{mbStdResult.stdResSelected.trainingCourseID.courseAname}" />
+						<h:outputText value="#{msg.lbl_student_name}" />
+						<h:outputText value="#{mbSec.lang.equals('en')? mbStdResult.stdRes.studentID.studentEname: mbStdResult.stdRes.studentID.studentAname}" />
+
+						<h:outputText value="#{msg.lbl_training_course_name}" />
+						<h:outputText
+							value="#{mbSec.lang.equals('en')? mbStdResult.stdRes.trainingCourseID.courseEname : mbStdResult.stdRes.trainingCourseID.courseAname}" />
 
 						<h:outputText value="#{msg.lbl_english_mark}" />
-						<h:outputText value="#{mbStdResult.stdResSelected.englishMark}" />
+						<h:outputText value="#{mbStdResult.stdRes.englishMark}" />
 
 						<h:outputText value="#{msg.lbl_interview_mark}" />
-						<h:outputText value="#{mbStdResult.stdResSelected.interviewMark}" />
+						<h:outputText value="#{mbStdResult.stdRes.interviewMark}" />
 
 						<h:outputText value="#{msg.lbl_accepted_flag}" />
-						<h:outputText value="#{mbStdResult.stdResSelected.acceptedFlag}" />
+						<h:outputText value="#{mbStdResult.stdRes.acceptedFlag}" />
 
 						<h:outputText value="#{msg.lbl_notes}" />
-						<h:outputText value="#{mbStdResult.stdResSelected.notes}" />
+						<h:outputText value="#{mbStdResult.stdRes.notes}" />
 					</p:panelGrid>
 				</p:outputPanel>
 			</p:dialog>

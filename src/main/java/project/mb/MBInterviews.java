@@ -9,6 +9,7 @@ import javax.faces.bean.ViewScoped;
 import project.bean.Interviews;
 import project.bean.Student;
 import project.dao.InterviewsDAO;
+import project.email.Email;
 
 @ViewScoped
 @ManagedBean(name = "mbInterviews")
@@ -26,6 +27,14 @@ public class MBInterviews {
 		interviews = new Interviews();
 
 		student = new Student();
+	}
+
+	public void sendEmail() {
+		for (int i = 0; i < interviewsTable.size(); i++) {
+			Email.sendEmail(interviewsTable.get(i).getStudentID().getStudentEmail(),
+					interviewsTable.get(i).getStudentID().getMessage());
+		}
+		System.out.println("All email sent successfully");
 	}
 
 	public Interviews getInterviews() {

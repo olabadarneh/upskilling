@@ -9,19 +9,20 @@
 		<br />
 
 		<h:form id="form">
-			<p:carousel value="#{mbStdResult.stdResTable}" headerText="Stugent Results" var="strRes"
+			<p:carousel value="#{mbStdResult.stdResTable}" headerText="Student Results" var="strRes"
 				itemStyle="width:200px;height:200px;text-align:center" numVisible="1" easing="easeOutBounce" cricular="true">
 				<h:panelGrid columns="2" style="width:100%" columnClasses="label,value">
 
-					<h:outputText value="#{msg.lbl_std_ar_name}" />
-					<h:outputText value="#{strRes.studentID.studentAname}" />
+					<h:outputText value="#{msg.lbl_student_name}" />
+					<h:outputText value="#{mbSec.lang.equals('en')? strRes.studentID.studentEname: strRes.studentID.studentAname}" />
 
-					<h:outputText value="#{msg.lbl_course_ar_name}" />
-					<h:outputText value="#{strRes.trainingCourseID.courseAname}" />
+					<h:outputText value="#{msg.lbl_training_course_name}" />
+					<h:outputText value="#{mbSec.lang.equals('en')? strRes.trainingCourseID.courseEname : strRes.trainingCourseID.courseAname}" />
+
 
 					<f:facet name="footer">
 						<p:commandButton value="X" action="#{mbStdResult.remove()}" ajax="false">
-							<f:setPropertyActionListener value="#{std}" target="#{mbStdResult.stdResSelected}" />
+							<f:setPropertyActionListener value="#{strRes}" target="#{mbStdResult.stdRes}" />
 						</p:commandButton>
 					</f:facet>
 				</h:panelGrid>

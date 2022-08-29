@@ -20,13 +20,10 @@
 						<h:outputText value="#{t.courseID}" />
 					</p:column>
 
-					<p:column headerText="#{msg.lbl_course_ar_name}" sortBy="#{t.courseAname}">
-						<h:outputText value="#{t.courseAname}" />
+					<p:column headerText="#{msg.lbl_training_course_name}" sortBy="#{mbSec.lang.equals('en')? t.courseEname : t.courseAname}">
+						<h:outputText value="#{mbSec.lang.equals('en')? t.courseEname : t.courseAname}" />
 					</p:column>
 
-					<p:column headerText="#{msg.lbl_course_en_name}" sortBy="#{t.courseEname}">
-						<h:outputText value="#{t.courseEname}" />
-					</p:column>
 
 					<p:column headerText="#{msg.lbl_course_max_students}" sortBy="#{t.maxStudent}">
 						<h:outputText value="#{t.maxStudent}" />
@@ -44,13 +41,11 @@
 				<p:panelGrid id="editPnl" columns="2">
 
 					<p:outputLabel value="#{msg.lbl_course_id}" />
-					<h:inputText value="#{mbTrainCourDlg.selectedTrainCour.courseID}" />
+					<h:outputText value="#{mbTrainCourDlg.selectedTrainCour.courseID}" />
 
-					<p:outputLabel value="#{msg.lbl_course_ar_name}" />
-					<h:inputText value="#{mbTrainCourDlg.selectedTrainCour.courseAname}" />
-
-					<p:outputLabel value="#{msg.lbl_course_en_name}" />
-					<h:inputText value="#{mbTrainCourDlg.selectedTrainCour.courseEname}" />
+					<p:outputLabel value="#{msg.lbl_training_course_name}" />
+					<h:inputText
+						value="#{mbSec.lang.equals('en')? mbTrainCourDlg.selectedTrainCour.courseEname : mbTrainCourDlg.selectedTrainCour.courseAname}" />
 
 					<p:outputLabel value="#{msg.lbl_course_max_students}" />
 					<h:inputText value="#{mbTrainCourDlg.selectedTrainCour.maxStudent}" />
@@ -61,7 +56,6 @@
 					</f:facet>
 				</p:panelGrid>
 			</p:dialog>
-
 		</h:form>
 	</ui:define>
 </ui:composition>

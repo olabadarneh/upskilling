@@ -23,12 +23,8 @@
 							<h:outputText value="#{s.schoolID}" />
 						</p:column>
 
-						<p:column headerText="#{msg.lbl_school_ar_name}" sortBy="#{s.schoolAname}">
-							<h:outputText value="#{s.schoolAname}" />
-						</p:column>
-
-						<p:column headerText="#{msg.lbl_school_en_name}" sortBy="#{s.schoolEname}">
-							<h:outputText value="#{s.schoolEname}" />
+						<p:column headerText="#{msg.lbl_school_name}" sortBy="#{mbSec.lang.equals('en') ? s.schoolEname : s.schoolAname}">
+							<h:outputText value="#{mbSec.lang.equals('en') ? s.schoolEname : s.schoolAname}" />
 						</p:column>
 
 						<p:column headerText="#{msg.lbl_edit}">
@@ -45,13 +41,10 @@
 					<p:panelGrid id="editPnl" columns="2">
 
 						<p:outputLabel value="#{msg.lbl_school_id}" />
-						<h:inputText value="#{mbSchDlg.selectedSchool.schoolID}" />
+						<h:outputText value="#{mbSchDlg.selectedSchool.schoolID}" />
 
-						<p:outputLabel value="#{msg.lbl_school_ar_name}" />
-						<h:inputText value="#{mbSchDlg.selectedSchool.schoolAname}" />
-
-						<p:outputLabel value="#{msg.lbl_school_en_name}" />
-						<h:inputText value="#{mbSchDlg.selectedSchool.schoolEname}" />
+						<p:outputLabel value="#{msg.lbl_school_name}" />
+						<h:inputText value="#{mbSec.lang.equals('en')? mbSchDlg.selectedSchool.schoolEname : mbSchDlg.selectedSchool.schoolAname}" />
 
 						<f:facet name="footer">
 							<p:commandButton value="#{msg.btn_save}" action="#{mbSchDlg.update()}" ajax="false" />

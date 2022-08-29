@@ -1,12 +1,19 @@
 package project.mb;
 
+import java.awt.image.BufferedImage;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.imageio.ImageIO;
+
 import project.bean.School;
 import project.dao.SchoolDAO;
+import project.report.Report;
 
 @ViewScoped
 @ManagedBean(name = "mbSchool")
@@ -37,6 +44,19 @@ public class MBSchool {
 			return false;
 		}
 		return filter(filtered, "", locale);
+	}
+
+	public String runSchoolReport() throws Exception {
+
+		Map<String, Object> parmeter = new HashMap<String, Object>();
+
+		BufferedImage image = ImageIO.read(getClass().getResourceAsStream("/images/upskilling schools.jpg"));
+		parmeter.put("p_image", image);
+
+		Report report = new Report();
+		report.runPdf("school.jasper", parmeter);
+		return null;
+
 	}
 
 /////////////  Getters & Setters ///////////////

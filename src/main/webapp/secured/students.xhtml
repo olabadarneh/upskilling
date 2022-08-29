@@ -18,7 +18,7 @@
 				<p:panel header="#{std.studentID}" style="text-align:center">
 					<h:panelGrid columns="1" style="width:100%">
 
-						<h:outputText value="#{std.studentAname}" />
+						<h:outputText value="#{mbSec.lang.equals('en') ? std.studentEname : std.studentAname}" />
 
 						<p:commandLink update=":form:stdDetail" oncomplete="PF('stdDialog').show()" title="View Detail">
 							<h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
@@ -34,20 +34,20 @@
 				<p:outputPanel id="stdDetail" style="text-align:center;">
 					<p:panelGrid columns="2" rendered="#{not empty mbAddStd.student}" columnClasses="label,value">
 
-						<h:outputText value="#{msg.lbl_uni_ar_name}:" />
-						<h:outputText value="#{mbAddStd.student.studentUniversity.universityAname}" />
+						<h:outputText value="#{msg.lbl_university_name}:" />
+						<h:outputText
+							value="#{mbSec.lang.equals('en') ? mbAddStd.student.studentUniversity.universityEname: mbAddStd.student.studentUniversity.universityAname}" />
 
 						<h:outputText value="#{msg.lbl_school_ar_name}:" />
-						<h:outputText value="#{mbAddStd.student.studentSchool.schoolAname}" />
+						<h:outputText
+							value="#{mbSec.lang.equals('en') ? mbAddStd.student.studentSchool.schoolEname: mbAddStd.student.studentSchool.schoolAname}" />
 
-						<h:outputText value="#{msg.lbl_program_ar_name}:" />
-						<h:outputText value="#{mbAddStd.student.studentProgram.programAname}" />
+						<h:outputText value="#{mbSec.lang.equals('en') ? msg.lbl_program_en_name : msg.lbl_program_en_name}" />
+						<h:outputText
+							value="#{mbSec.lang.equals('en') ? mbAddStd.student.studentProgram.programEname: mbAddStd.student.studentProgram.programAname}" />
 
-						<h:outputText value="#{msg.lbl_std_ar_name}:" />
-						<h:outputText value="#{mbAddStd.student.studentAname}" />
-
-						<h:outputText value="#{msg.lbl_std_en_name}:" />
-						<h:outputText value="#{mbAddStd.student.studentEname}" />
+						<h:outputText value="#{msg.lbl_student_name}:" />
+						<h:outputText value="#{mbSec.lang.equals('en') ? mbAddStd.student.studentEname :  mbAddStd.student.studentAname}" />
 
 						<h:outputText value="#{msg.lbl_phone}:" />
 						<h:outputText value="#{mbAddStd.student.studentPhoneNo}" />

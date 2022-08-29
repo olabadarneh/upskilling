@@ -25,27 +25,17 @@
 					</p:column>
 
 
-					<p:column headerText="#{msg.lbl_school_ar_name}" sortBy="#{s.schoolAname}">
+					<p:column headerText="#{msg.lbl_school_name}" sortBy="#{s.schoolAname}">
 						<p:cellEditor>
 							<f:facet name="output">
-								<h:outputText value="#{s.schoolAname}" />
+								<h:outputText value="#{mbSec.lang.equals('en')? s.schoolEname: s.schoolAname}" />
 							</f:facet>
 							<f:facet name="input">
-								<p:inputText id="scharname" value="#{s.schoolAname}" style="width:100%" />
+								<p:inputText id="scharname" value="#{mbSec.lang.equals('en')?s.schoolEname:s.schoolAname}" style="width:100%" />
 							</f:facet>
 						</p:cellEditor>
 					</p:column>
 
-					<p:column headerText="#{msg.lbl_school_en_name}" sortBy="#{s.schoolEname}">
-						<p:cellEditor>
-							<f:facet name="output">
-								<h:outputText value="#{s.schoolEname}" />
-							</f:facet>
-							<f:facet name="input">
-								<p:inputText id="schenname" value="#{s.schoolEname}" style="width:100%" />
-							</f:facet>
-						</p:cellEditor>
-					</p:column>
 				</p:dataTable>
 
 				<p:contextMenu for="table" widgetVar="editMenu">

@@ -25,27 +25,33 @@
 						<h:outputText value="#{msg.menu_add_program}" />
 					</f:facet>
 
-					<p:outputLabel value="#{msg.lbl_program_ID}" for="id" />
-					<p:inputNumber id="id" value="#{mbAddProgram.program.programID}" required="true"
-						requiredMessage="#{msg.msg_required}-#{msg.lbl_program_ID}" decimalPlaces="0" decimalSeparator=" " thousandSeparator=" " />
+					<ui:remove>
+						<p:outputLabel value="#{msg.lbl_program_ID}" for="id" />
+						<p:inputNumber id="id" value="#{mbAddProgram.program.programID}" required="true"
+							requiredMessage="#{msg.msg_required}-#{msg.lbl_program_ID}" decimalPlaces="0" decimalSeparator=" " thousandSeparator=" " />
+					</ui:remove>
 
-					<p:outputLabel value="#{msg.lbl_school_id}" for="school" />
+					<p:outputLabel value="#{msg.lbl_school_name}" for="school" />
 					<p:selectOneMenu id="school" value="#{mbAddProgram.program.school.schoolID}" required="true"
-						requiredMessage="#{msg.msg_required}-#{msg.lbl_school_ar_name}">
-						<f:selectItem itemLabel="Select One" itemValue="" />
-						<f:selectItems value="#{mbAddProgram.schoolTable}" var="s" itemLabel="#{s.schoolAname}" itemValue="#{s.schoolID}" />
+						requiredMessage="#{msg.msg_required}-#{msg.lbl_school_name}">
+						<f:selectItem itemLabel="#{msg.lbl_select_one}" itemValue="" />
+						<f:selectItems value="#{mbAddProgram.schoolTable}" var="s" itemLabel="#{mbSec.lang.equals('en')?s.schoolEname:s.schoolAname}"
+							itemValue="#{s.schoolID}" />
 					</p:selectOneMenu>
-
 
 					<p:outputLabel value="#{msg.lbl_program_ar_name}" for="progarname" />
 					<p:inputText id="progarname" value="#{mbAddProgram.program.programAname}" required="true"
 						requiredMessage="#{msg.msg_required}-#{msg.lbl_program_ar_name}" validatorMessage="#{msg.msg_validator}-#{msg.lbl_program_ar_name}"
-						maxlength="500" />
+						maxlength="500">
+						<f:validateRegex pattern="[أ-ي ]+" />
+					</p:inputText>
 
 					<p:outputLabel value="#{msg.lbl_program_en_name}" for="progenname" />
 					<p:inputText id="progenname" value="#{mbAddProgram.program.programEname}" required="true"
 						requiredMessage="#{msg.msg_required}-#{msg.lbl_program_en_name}" validatorMessage="#{msg.msg_validator}-#{msg.lbl_program_en_name}"
-						maxlength="500" />
+						maxlength="500">
+						<f:validateRegex pattern="[A-Z a-z ]+" />
+					</p:inputText>
 
 					<f:facet name="footer">
 						<div align="center">

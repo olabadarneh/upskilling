@@ -23,40 +23,49 @@
 						<h:outputText value="#{msg.menu_add_student}" />
 					</f:facet>
 
-					<p:outputLabel value="#{msg.lbl_std_id}" for="id" />
-					<p:inputNumber id="id" value="#{mbAddStd.student.studentID}" required="true" requiredMessage="#{msg.msg_required}-{msg.lbl_std_id}"
-						decimalPlaces="0" decimalSeparator=" " thousandSeparator=" " />
+					<ui:remove>
+						<p:outputLabel value="#{msg.lbl_std_id}" for="id" />
+						<p:inputNumber id="id" value="#{mbAddStd.student.studentID}" required="true" requiredMessage="#{msg.msg_required}-#{msg.lbl_std_id}"
+							decimalPlaces="0" decimalSeparator=" " thousandSeparator=" " />
+					</ui:remove>
 
-					<p:outputLabel value="#{msg.lbl_uni_ar_name}" for="uni" />
-					<p:selectOneMenu id="uni" value="#{mbAddStd.university.universityID}" required="true"
-						requiredMessage="#{msg.msg_required}-#{msg.lbl_uni_ar_name}">
-						<f:selectItem itemLabel="Select One" itemValue="" />
-						<f:selectItems value="#{mbAddStd.universityTable}" var="u" itemLabel="#{u.universityAname}" itemValue="#{u.universityID}" />
+					<p:outputLabel value="#{msg.lbl_university_name}" for="uni" />
+					<p:selectOneMenu id="uni" value="#{mbAddStd.student.studentUniversity.universityID}" required="true"
+						requiredMessage="#{msg.msg_required}-#{msg.lbl_university_name}">
+						<f:selectItem itemLabel="#{msg.lbl_select_one}" itemValue="" />
+						<f:selectItems value="#{mbAddStd.universityTable}" var="u" itemLabel="#{mbSec.lang.equals('en')?u.universityEname:u.universityAname}"
+							itemValue="#{u.universityID}" />
 					</p:selectOneMenu>
 
-					<p:outputLabel value="#{msg.lbl_school_ar_name}" for="school" />
-					<p:selectOneMenu id="school" value="#{mbAddStd.school.schoolID}" required="true"
-						requiredMessage="#{msg.msg_required}-#{msg.lbl_school_ar_name}">
-						<f:selectItem itemLabel="Select One" itemValue="" />
-						<f:selectItems value="#{mbAddStd.schoolTable}" var="s" itemLabel="#{s.schoolAname}" itemValue="#{s.schoolID}" />
+					<p:outputLabel value="#{msg.lbl_school_name}" for="school" />
+					<p:selectOneMenu id="school" value="#{mbAddStd.student.studentSchool.schoolID}" required="true"
+						requiredMessage="#{msg.msg_required}-#{msg.lbl_school_name}">
+						<f:selectItem itemLabel="#{msg.lbl_select_one}" itemValue="" />
+						<f:selectItems value="#{mbAddStd.schoolTable}" var="s" itemLabel="#{mbSec.lang.equals('en')? s.schoolEname : s.schoolAname}"
+							itemValue="#{s.schoolID}" />
 					</p:selectOneMenu>
 
-					<p:outputLabel value="#{msg.lbl_program_ar_name}" for="prog" />
-					<p:selectOneMenu id="prog" value="#{mbAddStd.program.programID}" required="true"
-						requiredMessage="#{msg.msg_required}-#{msg.lbl_program_ar_name}">
-						<f:selectItem itemLabel="Select One" itemValue="" />
-						<f:selectItems value="#{mbAddStd.programTable}" var="p" itemLabel="#{p.programAname}" itemValue="#{p.programID}" />
+					<p:outputLabel value="#{msg.lbl_program_name}" for="prog" />
+					<p:selectOneMenu id="prog" value="#{mbAddStd.student.studentProgram.programID}" required="true"
+						requiredMessage="#{msg.msg_required}-#{msg.lbl_program_name}">
+						<f:selectItem itemLabel="#{msg.lbl_select_one}" itemValue="" />
+						<f:selectItems value="#{mbAddStd.programTable}" var="p" itemLabel="#{mbSec.lang.equals('en')?p.programEname:p.programAname}"
+							itemValue="#{p.programID}" />
 					</p:selectOneMenu>
 
 					<p:outputLabel value="#{msg.lbl_std_ar_name}" for="stdarname" />
 					<p:inputText id="stdarname" value="#{mbAddStd.student.studentAname}" required="true"
 						requiredMessage="#{msg.msg_required}-#{msg.lbl_std_ar_name}" validatorMessage="#{msg.msg_validator}-#{msg.lbl_std_ar_name}"
-						maxlength="500" />
+						maxlength="500">
+						<f:validateRegex pattern="[أ-ي ]+" />
+					</p:inputText>
 
 					<p:outputLabel value="#{msg.lbl_std_en_name}" for="stdenname" />
 					<p:inputText id="stdenname" value="#{mbAddStd.student.studentEname}" required="true"
 						requiredMessage="#{msg.msg_required}-#{msg.lbl_std_en_name}" validatorMessage="#{msg.msg_validator}-#{msg.lbl_std_en_name}"
-						maxlength="500" />
+						maxlength="500">
+						<f:validateRegex pattern="[A-Z a-z ]+" />
+					</p:inputText>
 
 					<p:outputLabel value="#{msg.lbl_phone}" />
 					<p:inputText value="#{mbAddStd.student.studentPhoneNo}" validatorMessage="#{msg.msg_validator}-#{msg.lbl_phone}" maxlength="10">
@@ -65,12 +74,12 @@
 
 					<p:outputLabel value="#{msg.lbl_sex}" />
 					<p:selectOneRadio value="#{mbAddStd.student.studentSex}">
-						<f:selectItem itemLabel="#{msg.menu_male}" itemValue="0" />
-						<f:selectItem itemLabel="#{msg.menu_female}" itemValue="1" />
+						<f:selectItem itemLabel="#{msg.menu_male}" itemValue="Male" />
+						<f:selectItem itemLabel="#{msg.menu_female}" itemValue="Female" />
 					</p:selectOneRadio>
 
 					<p:outputLabel value="#{msg.lbl_birthdate}" />
-					<p:calendar value="#{mbAddStd.student.studentBirthDate}" pattern="dd/MM/yyyy" />
+					<p:calendar value="#{mbAddStd.student.studentBirthDate}" pattern="dd/MM/YYYY" />
 
 					<p:outputLabel value="#{msg.lbl_email}" />
 					<p:inputText value="#{mbAddStd.student.studentEmail}" validatorMessage="#{msg.msg_validator}-#{msg.lbl_email}">

@@ -22,12 +22,9 @@
 							<h:outputText value="#{u.universityID}" />
 						</p:column>
 
-						<p:column headerText="#{msg.lbl_uni_ar_name}" sortBy="#{u.universityAname}">
-							<h:outputText value="#{u.universityAname}" />
-						</p:column>
-
-						<p:column headerText="#{msg.lbl_uni_en_name}" sortBy="#{u.universityEname}">
-							<h:outputText value="#{u.universityEname}" />
+						<p:column headerText="#{msg.lbl_university_name}" sortBy="#{mbSec.lang.equals('en') ? u.universityEname : u.universityAname}">
+							<h:outputText value="#{mbSec.lang.equals('en') ? u.universityEname : u.universityAname}"
+								sortBy="#{mbSec.lang.equals('en') ? u.universityEname : u.universityAname}" />
 						</p:column>
 
 						<p:column headerText="#{msg.lbl_uni_website}" sortBy="#{u.website}">
@@ -47,13 +44,11 @@
 					<p:panelGrid id="editPnl" columns="2">
 
 						<p:outputLabel value="#{msg.lbl_un_id}" />
-						<h:inputText value="#{mbUniDlg.selectedUniversity.universityID}" />
+						<h:outputText value="#{mbUniDlg.selectedUniversity.universityID}" />
 
-						<p:outputLabel value="#{msg.lbl_uni_ar_name}" />
-						<h:inputText value="#{mbUniDlg.selectedUniversity.universityAname}" />
-
-						<p:outputLabel value="#{msg.lbl_uni_en_name}" />
-						<h:inputText value="#{mbUniDlg.selectedUniversity.universityEname}" />
+						<p:outputLabel value="#{msg.lbl_university_name}" />
+						<h:inputText
+							value="#{mbSec.lang.equals('en')? mbUniDlg.selectedUniversity.universityEname : mbUniDlg.selectedUniversity.universityAname}" />
 
 						<f:facet name="footer">
 							<p:commandButton value="#{msg.btn_save}" action="#{mbUniDlg.update()}" ajax="false" />

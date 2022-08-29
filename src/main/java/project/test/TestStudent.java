@@ -23,10 +23,11 @@ public class TestStudent {
 		System.out.println(sdf.format(now));
 
 		// insertTable
-		Student student = new Student(10, "nameStudent", "078888888");
+		Student student = new Student();
+		student.setStudentAname("ريما ");
 		student.setStudentSchool(new School(8));
-		student.setStudentUni(new University(10));
-		student.setStudentProg(new Program(14));
+		student.setStudentUniversity(new University(10));
+		student.setStudentProgram(new Program(14));
 		student.setStudentBirthDate(new Date());
 		row = studentdao.insert(student);
 		System.out.println("inserted " + row);

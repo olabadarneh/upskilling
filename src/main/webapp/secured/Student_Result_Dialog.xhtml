@@ -13,15 +13,15 @@
 				itemStyle="width:200px;height:200px;text-align:center" numVisible="1" easing="easeOutBounce" cricular="true">
 				<h:panelGrid columns="2" style="width:100%" columnClasses="label,value">
 
-					<h:outputText value="#{msg.lbl_std_ar_name}" />
-					<h:outputText value="#{strRes.studentID.studentAname}" />
+					<h:outputText value="#{msg.lbl_student_name}" />
+					<h:outputText value="#{mbSec.lang.equals('en')? strRes.studentID.studentEname: strRes.studentID.studentAname}" />
 
-					<h:outputText value="#{msg.lbl_course_ar_name}" />
-					<h:outputText value="#{strRes.trainingCourseID.courseAname}" />
+					<h:outputText value="#{msg.lbl_training_course_name}" />
+					<h:outputText value="#{mbSec.lang.equals('en')? strRes.trainingCourseID.courseEname : strRes.trainingCourseID.courseAname}" />
 
 					<f:facet name="footer">
 						<p:commandButton value="..." update=":form:editPnl" onclick="PF('stdResDlg').show()">
-							<f:setPropertyActionListener value="#{strRes}" target="#{mbStdResult.stdRes}" />
+							<f:setPropertyActionListener value="#{strRes}" target="#{mbStdResult.studentdRes}" />
 						</p:commandButton>
 					</f:facet>
 				</h:panelGrid>
@@ -31,25 +31,21 @@
 				<p:panelGrid id="editPnl" columns="2">
 
 					<p:outputLabel value="#{msg.lbl_english_mark}" for="enmark" />
-					<p:inputNumber id="enmark" value="#{mbStdResult.stdRes.englishMark}" required="true"
-						requiredMessage="#{msg.msg_required}-#{msg.lbl_english_mark}" validatorMessage="#{msg.msg_validator}-#{msg.lbl_english_mark}"
+					<p:inputNumber id="enmark" value="#{mbStdResult.studentdRes.englishMark}" requiredMessage="#{msg.msg_required}-#{msg.lbl_english_mark}"
 						decimalPlaces="0" decimalSeparator=" " thousandSeparator=" " maxValue="100" />
 
 					<p:outputLabel value="#{msg.lbl_interview_mark}" for="inmark" />
-					<p:inputNumber id="inmark" value="#{mbStdResult.stdRes.interviewMark}" required="true"
-						requiredMessage="#{msg.msg_required}-#{msg.lbl_interview_mark}" validatorMessage="#{msg.msg_validator}-#{msg.lbl_interview_mark}"
-						maxValue="100" decimalPlaces="0" decimalSeparator=" " thousandSeparator=" " />
+					<p:inputNumber id="inmark" value="#{mbStdResult.studentdRes.interviewMark}" maxValue="100" decimalPlaces="0" decimalSeparator=" "
+						thousandSeparator=" " />
 
 					<p:outputLabel value="#{msg.lbl_accepted_flag}" />
-					<p:selectOneRadio value="#{mbStdResult.stdRes.acceptedFlag}" required="true">
-						<f:selectItem itemLabel="#{msg.menu_acceptable}" itemValue="1" />
-						<f:selectItem itemLabel="#{msg.menu_not_acceptable}" itemValue="0" />
+					<p:selectOneRadio value="#{mbStdResult.studentdRes.acceptedFlag}">
+						<f:selectItem itemLabel="#{msg.menu_acceptable}" itemValue="true" />
+						<f:selectItem itemLabel="#{msg.menu_not_acceptable}" itemValue="false" />
 					</p:selectOneRadio>
 
 					<p:outputLabel value="#{msg.lbl_notes}" for="notes" />
-					<p:inputTextarea id="notes" value="#{mbStdResult.stdRes.notes}" required="true" requiredMessage="#{msg.msg_required}-#{msg.lbl_notes}"
-						validatorMessage="#{msg.msg_validator}-#{msg.lbl_notes}" maxlength="2000" />
-
+					<p:inputTextarea id="notes" value="#{mbStdResult.studentdRes.notes}" />
 
 					<f:facet name="footer">
 						<p:commandButton value="#{msg.btn_save}" action="#{mbStdResult.update()}" ajax="false" />

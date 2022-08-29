@@ -24,23 +24,30 @@
 						<h:outputText value="#{msg.menu_add_course}" />
 					</f:facet>
 
-					<p:outputLabel value="#{msg.lbl_course_id}" for="id" />
-					<p:inputNumber id="id" value="#{mbTrainCour.trainingCourse.courseID}" required="true"
-						requiredMessage="#{msg.msg_required}-#{msg.lbl_course_id}" decimalPlaces="0" decimalSeparator=" " thousandSeparator=" " />
+					<ui:remove>
+						<p:outputLabel value="#{msg.lbl_course_id}" for="id" />
+						<p:inputNumber id="id" value="#{mbTrainCour.trainingCourse.courseID}" required="true"
+							requiredMessage="#{msg.msg_required}-#{msg.lbl_course_id}" decimalPlaces="0" decimalSeparator=" " thousandSeparator=" " />
+					</ui:remove>
 
 					<p:outputLabel value="#{msg.lbl_course_ar_name}" for="tname" />
 					<p:inputText id="tname" value="#{mbTrainCour.trainingCourse.courseAname}" required="true"
 						requiredMessage="#{msg.msg_required}-#{msg.lbl_course_ar_name}" validatorMessage="#{msg.msg_validator}-#{msg.lbl_course_ar_name}"
-						maxlength="500" />
+						maxlength="500">
+						<f:validateRegex pattern="[أ-ي ]+" />
+					</p:inputText>
 
 					<p:outputLabel value="#{msg.lbl_course_en_name}" for="tenname" />
 					<p:inputText id="tenname" value="#{mbTrainCour.trainingCourse.courseEname}" required="true"
 						requiredMessage="#{msg.msg_required}-#{msg.lbl_course_en_name}" validatorMessage="#{msg.msg_validator}-#{msg.lbl_course_en_name}"
-						maxlength="500" />
+						maxlength="500">
+						<f:validateRegex pattern="[A-Z a-z ]+" />
+					</p:inputText>
 
 					<p:outputLabel value="#{msg.lbl_course_max_students}" for="maxid" />
 					<p:inputNumber id="maxid" value="#{mbTrainCour.trainingCourse.maxStudent}" required="true"
-						requiredMessage="#{msg.msg_required}-#{msg.lbl_course_max_students}" decimalPlaces="0" decimalSeparator=" " thousandSeparator=" " />
+						requiredMessage="#{msg.msg_required}-#{msg.lbl_course_max_students}" decimalPlaces="0" decimalSeparator=" " thousandSeparator=" "
+						maxValue="15" />
 
 					<f:facet name="footer">
 						<div align="center">

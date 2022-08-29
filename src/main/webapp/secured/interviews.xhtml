@@ -22,8 +22,9 @@
 						<h:outputText value="#{interviews.interviews_id}" />
 					</p:column>
 
-					<p:column headerText="#{msg.lbl_std_ar_name}" sortBy="#{interviews.studentID.studentAname}">
-						<h:outputText value="#{interviews.studentID.studentAname}" />
+					<p:column headerText="#{msg.lbl_student_name}"
+						sortBy="#{mbSec.lang.equals('en') ? mbInterviews.student.studentEname : mbInterviews.student.studentAname}">
+						<h:outputText value="#{mbSec.lang.equals('en') ? interviews.studentID.studentEname : interviews.studentID.studentAname}" />
 					</p:column>
 
 					<p:column headerText="#{msg.lbl_email}" sortBy="#{interviews.studentID.studentEname}">
@@ -40,7 +41,7 @@
 
 					<f:facet name="footer">
 						<div align="left">
-							<p:commandButton value="Send Email" action="#{mbSendEmail.sendEmail()}" ajax="false" />
+							<p:commandButton value="#{msg.btn_send_email}" action="#{mbInterviews.sendEmail()}" ajax="false" />
 						</div>
 					</f:facet>
 				</p:dataTable>

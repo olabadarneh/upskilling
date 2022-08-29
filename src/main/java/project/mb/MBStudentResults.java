@@ -7,26 +7,45 @@ import javax.faces.bean.ViewScoped;
 import project.bean.Student;
 import project.bean.StudentResult;
 import project.bean.TrainingCourse;
+import project.dao.StudentDAO;
 import project.dao.StudentResultDAO;
+import project.dao.TrainingCourseDAO;
 import util.Message;
 
 @ViewScoped
 @ManagedBean(name = "mbStdResult")
 public class MBStudentResults {
 	private StudentResult stdRes;
+	private StudentResult studentdRes;
 	private List<StudentResult> stdResTable;
 	private StudentResultDAO stdResDAO;
 	private Student student;
 	private TrainingCourse trainCourse;
+	private List<Student> std;
+	private List<TrainingCourse> trainCourseTable;
+	private StudentDAO stdDAO;
+	private TrainingCourseDAO trainCourseDAO;
 
 	@PostConstruct
 	public void init() {
+		stdRes = new StudentResult();
+		studentdRes = new StudentResult();
+
+		stdDAO = new StudentDAO();
+		std = stdDAO.selectAll();
+
+		trainCourseDAO = new TrainingCourseDAO();
+		trainCourseTable = trainCourseDAO.selectAll();
+
+		studentdRes.setStudentID(new Student());
+		studentdRes.setTrainingCourseID(new TrainingCourse());
+
+		stdRes.setStudentID(new Student());
+		stdRes.setTrainingCourseID(new TrainingCourse());
+
 		stdResDAO = new StudentResultDAO();
 		stdResTable = stdResDAO.selectAll();
-		stdRes = new StudentResult();
 
-		student = new Student();
-		trainCourse = new TrainingCourse();
 	}
 
 	public String add() {
@@ -40,34 +59,20 @@ public class MBStudentResults {
 
 	public String update() {
 		stdResDAO = new StudentResultDAO();
-		stdResDAO.update(getStdRes());
+		stdResDAO.update(getStudentdRes());
 		stdResTable = stdResDAO.selectAll();
 		Message.addMessageByKey("INFO", " ", "msg_edit");
 		return null;
 	}
 
 	public String remove() {
-		stdResDAO.delete(student.getStudentID());
+		stdResDAO.delete(stdRes.getStudentID().getStudentID());
 		stdResTable = stdResDAO.selectAll();
 		Message.addMessageByKey("INFO", " ", "msg_remove");
 		return null;
 	}
 
 	////////////// Getters & Setters ////////////
-	public StudentResult getStdResSelected() {
-		if (stdRes == null) {
-			stdRes = new StudentResult();
-			stdRes.setStudentID(new Student());
-			stdRes.setTrainingCourseID(new TrainingCourse());
-
-		}
-		return stdRes;
-	}
-
-	public void setStdResSelected(StudentResult stdResSelected) {
-		this.stdRes = stdResSelected;
-	}
-
 	public List<StudentResult> getStdResTable() {
 		return stdResTable;
 	}
@@ -85,6 +90,11 @@ public class MBStudentResults {
 	}
 
 	public StudentResult getStdRes() {
+		if (stdRes == null) {
+			stdRes = new StudentResult();
+			stdRes.setStudentID(new Student());
+			stdRes.setTrainingCourseID(new TrainingCourse());
+		}
 		return stdRes;
 	}
 
@@ -98,5 +108,29 @@ public class MBStudentResults {
 
 	public void setTrainCourse(TrainingCourse trainCourse) {
 		this.trainCourse = trainCourse;
+	}
+
+	public List<Student> getStd() {
+		return std;
+	}
+
+	public void setStd(List<Student> std) {
+		this.std = std;
+	}
+
+	public List<TrainingCourse> getTrainCourseTable() {
+		return trainCourseTable;
+	}
+
+	public void setTrainCourseTable(List<TrainingCourse> trainCourseTable) {
+		this.trainCourseTable = trainCourseTable;
+	}
+
+	public StudentResult getStudentdRes() {
+		return studentdRes;
+	}
+
+	public void setStudentdRes(StudentResult studentdRes) {
+		this.studentdRes = studentdRes;
 	}
 }

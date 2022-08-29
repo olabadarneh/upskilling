@@ -24,17 +24,14 @@
 							<h:outputText value="#{p.programID}" />
 						</p:column>
 
-						<p:column headerText="#{msg.lbl_school_ar_name}" sortBy="#{p.school.schoolAname}">
-							<h:outputText value="#{p.school.schoolAname}" />
+						<p:column headerText="#{msg.lbl_school_name}" sortBy="#{mbSec.lang.equals('en') ? s.schoolEname : s.schoolAname}">
+							<h:outputText value="#{mbSec.lang.equals('en') ? p.school.schoolEname : p.school.schoolAname}" />
 						</p:column>
 
-						<p:column headerText="#{msg.lbl_program_ar_name}" sortBy="#{p.programAname}">
-							<h:outputText value="#{p.programAname}" />
+						<p:column headerText="#{msg.lbl_program_name}" sortBy="#{mbSec.lang.equals('en')? p.programEname : p.programAname}">
+							<h:outputText value="#{mbSec.lang.equals('en')? p.programEname : p.programAname}" />
 						</p:column>
 
-						<p:column headerText="#{msg.lbl_program_en_name}" sortBy="#{p.programEname}">
-							<h:outputText value="#{p.programEname}" />
-						</p:column>
 
 						<p:column headerText="#{msg.lbl_remove}">
 							<p:commandButton value="X" action="#{mbRemoveProg.remove()}" ajax="false">

@@ -12,7 +12,7 @@
 				<p:outputPanel>
             #{str.student.studentID}
             <br />
-            #{str.student.studentAname}
+            #{mbSec.lang.equals('en')? str.student.studentEname: str.student.studentAname}
             <br />
 					<p:commandButton update=":form:strDetail" icon="ui-icon-search" title="View" oncomplete="PF('strDialog').show();">
 						<f:setPropertyActionListener value="#{str}" target="#{mbStdTrainCour.selectedSTR}" />
@@ -25,11 +25,13 @@
 				<p:outputPanel id="strDetail" style="text-align:center;" layout="block">
 					<p:panelGrid columns="2" rendered="#{not empty mbStdTrainCour.selectedSTR}" columnClasses="value" style="width:100%">
 
-						<h:outputText value="#{msg.lbl_std_en_name}" />
-						<h:outputText value="#{mbStdTrainCour.selectedSTR.student.studentEname}" />
+						<h:outputText value="#{msg.lbl_student_name}" />
+						<h:outputText
+							value="#{mbSec.lang.equals('en')? mbStdTrainCour.selectedSTR.student.studentEname:mbStdTrainCour.selectedSTR.student.studentAname}" />
 
-						<h:outputText value="#{msg.lbl_course_en_name}" />
-						<h:outputText value="#{mbStdTrainCour.selectedSTR.trainingCourseID.courseEname}" />
+						<h:outputText value="#{msg.lbl_training_course_name}" />
+						<h:outputText
+							value="#{mbSec.lang.equals('en')? mbStdTrainCour.selectedSTR.trainingCourseID.courseEname : mbStdTrainCour.selectedSTR.trainingCourseID.courseAname}" />
 
 						<h:outputText value="#{msg.lbl_priority}" />
 						<h:outputText value="#{mbStdTrainCour.selectedSTR.priority}" />
@@ -39,12 +41,12 @@
 						<f:facet name="header">
             #{msg.lbl_student_training_course_detailed}
         </f:facet>
-						<p:column headerText="#{msg.lbl_std_en_name}">
-							<h:outputText value="#{str.student.studentEname}" />
+						<p:column headerText="#{msg.lbl_student_name}">
+							<h:outputText value="#{mbSec.lang.equals('en')?str.student.studentEname:str.student.studentAname}" />
 						</p:column>
 
-						<p:column headerText="#{msg.lbl_course_en_name}">
-							<h:outputText value="#{str.trainingCourseID.courseEname}" />
+						<p:column headerText="#{msg.lbl_training_course_name}">
+							<h:outputText value="#{mbSec.lang.equals('en')?str.trainingCourseID.courseEname:str.trainingCourseID.courseAname}" />
 						</p:column>
 
 						<p:column headerText="#{msg.lbl_selected_course}">

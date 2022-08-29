@@ -22,40 +22,41 @@
 						<h:outputText value="#{msg.menu_add_student_result}" />
 					</f:facet>
 
-					<h:outputText value="#{msg.lbl_std_ar_name}" />
-					<p:selectOneMenu id="student" value="#{mbStdResult.student.studentID}" required="true"
-						requiredMessage="#{msg.msg_required}-#{msg.lbl_std_ar_name}">
-						<f:selectItem itemLabel="Select One" itemValue="" />
-						<f:selectItems value="#{mbStdResult.stdResTable}" var="s" itemLabel="#{s.studentID.studentAname}" itemValue="#{s.studentID.studentID}" />
+					<h:outputText value="#{msg.lbl_student_name}" />
+					<p:selectOneMenu id="student" value="#{mbStdResult.stdRes.studentID.studentID}" required="true"
+						requiredMessage="#{msg.msg_required}-#{msg.lbl_student_name}">
+						<f:selectItem itemLabel="#{msg.lbl_select_one}" itemValue="" />
+						<f:selectItems value="#{mbStdResult.std}" var="s" itemLabel="#{mbSec.lang.equals('en')?s.studentEname:s.studentAname}"
+							itemValue="#{s.studentID}" />
 					</p:selectOneMenu>
 
-					<h:outputText value="#{msg.lbl_course_ar_name}" />
-					<p:selectOneMenu id="course" value="#{mbStdResult.trainCourse.courseID}" required="true"
+					<h:outputText value="#{msg.lbl_training_course_name}" />
+					<p:selectOneMenu id="course" value="#{mbStdResult.stdRes.trainingCourseID.courseID}" required="true"
 						requiredMessage="#{msg.msg_required}-#{msg.lbl_course_ar_name}">
-						<f:selectItem itemLabel="Select One" itemValue="" />
-						<f:selectItems value="#{mbStdResult.stdResTable}" var="course" itemLabel="#{course.trainingCourseID.courseAname}"
-							itemValue="#{course.trainingCourseID.courseID}" />
+						<f:selectItem itemLabel="#{msg.lbl_select_one}" itemValue="" />
+						<f:selectItems value="#{mbStdResult.trainCourseTable}" var="course"
+							itemLabel="#{mbSec.lang.equals('en')?course.courseEname:course.courseAname}" itemValue="#{course.courseID}" />
 					</p:selectOneMenu>
 
 					<p:outputLabel value="#{msg.lbl_english_mark}" for="enmark" />
-					<p:inputNumber id="enmark" value="#{mbStdResult.stdResSelected.englishMark}" required="true"
+					<p:inputNumber id="enmark" value="#{mbStdResult.stdRes.englishMark}" required="true"
 						requiredMessage="#{msg.msg_required}-#{msg.lbl_english_mark}" validatorMessage="#{msg.msg_validator}-#{msg.lbl_english_mark}"
 						decimalPlaces="0" decimalSeparator=" " thousandSeparator=" " maxValue="100" />
 
 					<p:outputLabel value="#{msg.lbl_interview_mark}" for="inmark" />
-					<p:inputNumber id="inmark" value="#{mbStdResult.stdResSelected.interviewMark}" required="true"
+					<p:inputNumber id="inmark" value="#{mbStdResult.stdRes.interviewMark}" required="true"
 						requiredMessage="#{msg.msg_required}-#{msg.lbl_interview_mark}" validatorMessage="#{msg.msg_validator}-#{msg.lbl_interview_mark}"
 						maxValue="100" decimalPlaces="0" decimalSeparator=" " thousandSeparator=" " />
 
 					<p:outputLabel value="#{msg.lbl_accepted_flag}" />
-					<p:selectOneRadio value="#{mbStdResult.stdResSelected.acceptedFlag}">
+					<p:selectOneRadio value="#{mbStdResult.stdRes.acceptedFlag}">
 						<f:selectItem itemLabel="#{msg.menu_acceptable}" itemValue="1" />
 						<f:selectItem itemLabel="#{msg.menu_not_acceptable}" itemValue="0" />
 					</p:selectOneRadio>
 
 					<p:outputLabel value="#{msg.lbl_notes}" for="notes" />
-					<p:inputTextarea id="notes" value="#{mbStdResult.stdResSelected.notes}" required="true"
-						requiredMessage="#{msg.msg_required}-#{msg.lbl_notes}" validatorMessage="#{msg.msg_validator}-#{msg.lbl_notes}" maxlength="2000" />
+					<p:inputTextarea id="notes" value="#{mbStdResult.stdRes.notes}" required="true" requiredMessage="#{msg.msg_required}-#{msg.lbl_notes}"
+						validatorMessage="#{msg.msg_validator}-#{msg.lbl_notes}" maxlength="2000" />
 
 					<f:facet name="footer">
 						<div align="center">

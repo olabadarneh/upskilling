@@ -1,10 +1,14 @@
 package project.mb;
 
+import java.awt.image.BufferedImage;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.imageio.ImageIO;
 
 import project.bean.Program;
 import project.bean.School;
@@ -14,13 +18,13 @@ import project.dao.ProgramDAO;
 import project.dao.SchoolDAO;
 import project.dao.StudentDAO;
 import project.dao.UniversityDAO;
+import project.report.Report;
 import util.Message;
 
 @ViewScoped
 @ManagedBean(name = "mbAddStd")
 public class MBAddStudent {
 	private Student student;
-	private List<String> studentTable;
 	private List<Student> stdTable;
 	private StudentDAO studentDAO;
 	private List<School> schoolTable;
@@ -29,59 +33,67 @@ public class MBAddStudent {
 	private University university;
 	private School school;
 	private Program program;
+	private SchoolDAO schoolDAO;
+	private UniversityDAO universityDAO;
+	private ProgramDAO programDAO;
 
 	@PostConstruct
 	public void init() {
-		studentDAO = new StudentDAO();
-		studentTable = studentDAO.selectByAname();
-		stdTable = studentDAO.selectAll();
 		student = new Student();
+		studentDAO = new StudentDAO();
+		stdTable = studentDAO.selectAll();
 
-		SchoolDAO schoolDAO = new SchoolDAO();
+		schoolDAO = new SchoolDAO();
 		schoolTable = schoolDAO.selectAll();
-		school = new School();
+		student.setStudentSchool(new School());
 
-		UniversityDAO universityDAO = new UniversityDAO();
+		universityDAO = new UniversityDAO();
 		universityTable = universityDAO.selectAll();
-		university = new University();
+		student.setStudentUniversity(new University());
 
-		ProgramDAO programDAO = new ProgramDAO();
+		programDAO = new ProgramDAO();
 		programTable = programDAO.selectAll();
-		program = new Program();
+		student.setStudentProgram(new Program());
 
 	}
 
 	public String add() {
+		studentDAO = new StudentDAO();
 		studentDAO.insert(student);
 		Message.addMessageByKey("INFO", " ", "msg_save");
 		student = new Student();
 		student.setStudentSchool(new School());
-		student.setStudentUni(new University());
-		student.setStudentProg(new Program());
+		student.setStudentUniversity(new University());
+		student.setStudentProgram(new Program());
 		return null;
+	}
+
+	public String runStudentsReport() throws Exception {
+
+		Map<String, Object> parmeter = new HashMap<String, Object>();
+
+		BufferedImage image = ImageIO.read(getClass().getResourceAsStream("/images/Upskilling_Students.png"));
+		parmeter.put("p_image", image);
+
+		Report report = new Report();
+		report.runPdf("students.jasper", parmeter);
+		return null;
+
 	}
 
 	////////////// Getters & Setters //////////
 	public Student getStudent() {
 		if (student == null) {
 			student = new Student();
-			student.setStudentUni(new University());
+			student.setStudentUniversity(new University());
 			student.setStudentSchool(new School());
-			student.setStudentProg(new Program());
+			student.setStudentProgram(new Program());
 		}
 		return student;
 	}
 
 	public void setStudent(Student student) {
 		this.student = student;
-	}
-
-	public List<String> getStudentTable() {
-		return studentTable;
-	}
-
-	public void setStudentTable(List<String> studentTable) {
-		this.studentTable = studentTable;
 	}
 
 	public List<School> getSchoolTable() {

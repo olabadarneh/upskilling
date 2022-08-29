@@ -30,12 +30,9 @@
 						<h:outputText value="#{t.courseID}" />
 					</p:column>
 
-					<p:column headerText="#{msg.lbl_course_ar_name}" sortBy="#{t.courseAname}" filterBy="#{t.courseAname}" filterMatchMode="contains">
-						<h:outputText value="#{t.courseAname}" />
-					</p:column>
-
-					<p:column headerText="#{msg.lbl_course_en_name}" sortBy="#{t.courseEname}" filterBy="#{t.courseEname}" filterMatchMode="contains">
-						<h:outputText value="#{t.courseEname}" />
+					<p:column headerText="#{msg.lbl_training_course_name}" sortBy="#{mbSec.lang.equals('en')? t.courseEname : t.courseAname}"
+						filterBy="#{mbSec.lang.equals('en')? t.courseEname : t.courseAname}" filterMatchMode="contains">
+						<h:outputText value="#{mbSec.lang.equals('en')? t.courseEname : t.courseAname}" />
 					</p:column>
 
 					<p:column headerText="#{msg.lbl_course_max_students}" sortBy="#{t.maxStudent}" width="10%" filterBy="#{t.maxStudent}"

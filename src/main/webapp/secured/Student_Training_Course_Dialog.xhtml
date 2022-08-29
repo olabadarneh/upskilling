@@ -9,51 +9,43 @@
 		<br />
 
 		<h:form id="form">
-			<p:ring id="basic" value="#{mbStdTrainCour.strTable}" var="str">
+			<p:ring id="basic" value="#{mbStdTrainCour.strTable}" var="ring">
 				<p:outputPanel>
-            #{str.student.studentID}
+            #{ring.student.studentID}
             <br />
-            #{str.student.studentAname}
+            #{mbSec.lang.equals('en')? ring.student.studentEname: ring.student.studentAname}
             <br />
 
-					<p:commandButton value="..." update=":form:editPnl" onclick="PF('strDlg').show()">
-						<f:setPropertyActionListener value="#{str}" target="#{mbStdTrainCour.selectedSTR}" />
+					<p:commandButton value="..." update=":form:editPnl" onclick="PF('ringDlg').show()">
+						<f:setPropertyActionListener value="#{ring}" target="#{mbStdTrainCour.str}" />
 					</p:commandButton>
 
 				</p:outputPanel>
 			</p:ring>
 
-			<p:dialog header="#{msg.lbl_edit_student_training_course}" widgetVar="strDlg" height="290">
+			<p:dialog header="#{msg.lbl_edit_student_training_course}" widgetVar="ringDlg" height="290">
 
-				<p:panelGrid id="editPnl" columns="2" rendered="#{not empty mbStdTrainCour.selectedSTR}" columnClasses="label,value">
-
-
-					<p:outputLabel value="#{msg.lbl_std_ar_name}" for="std" />
-					<p:selectOneMenu id="std" value="#{mbStdTrainCour.student.studentID}" required="true"
-						requiredMessage="#{msg.msg_required}-#{msg.lbl_std_ar_name}">
-						<f:selectItem itemLabel="Select One" itemValue="" />
-						<f:selectItems value="#{mbStdTrainCour.strTable}" var="s" itemLabel="#{s.student.studentAname}" itemValue="#{s.student.studentID}" />
-					</p:selectOneMenu>
+				<p:panelGrid id="editPnl" columns="2" rendered="#{not empty mbStdTrainCour.str}" columnClasses="label,value">
 
 
-					<p:outputLabel value="#{msg.lbl_course_ar_name}" for="course" />
-					<p:selectOneMenu id="course" value="#{mbStdTrainCour.trainCourse.courseID}" required="true"
-						requiredMessage="#{msg.msg_required}-#{msg.lbl_std_ar_name}">
-						<f:selectItem itemLabel="Select One" itemValue="" />
-						<f:selectItems value="#{mbStdTrainCour.strTable}" var="s" itemLabel="#{s.trainingCourseID.courseAname}"
-							itemValue="#{s.trainingCourseID.courseID}" />
-					</p:selectOneMenu>
+					<p:outputLabel value="#{msg.lbl_student_name}" />
+					<h:outputText value="#{mbStdTrainCour.str.student.studentAname}" />
+
+
+					<p:outputLabel value="#{msg.lbl_training_course_name}" />
+					<h:outputText value="#{mbStdTrainCour.str.trainingCourseID.courseAname}" />
+
 
 					<h:outputText value="#{msg.lbl_priority}:" />
-					<p:inputText value="#{mbStdTrainCour.selectedSTR.priority}" />
+					<p:inputText value="#{mbStdTrainCour.str.priority}" />
 
 					<h:outputText value="#{msg.lbl_selected_course}:" />
-					<p:inputTextarea placeholder="Enter 3 courses in order of priority" value="#{mbStdTrainCour.selectedSTR.course}" />
+					<p:inputTextarea placeholder="Enter 3 courses in order of priority" value="#{mbStdTrainCour.str.course}" />
 
 
 					<f:facet name="footer">
 						<p:commandButton value="#{msg.btn_save}" action="#{mbStdTrainCour.update()}" ajax="false" />
-						<p:commandButton value="#{msg.btn_back}" onclick="PF('strDialog').hide()" />
+						<p:commandButton value="#{msg.btn_back}" onclick="PF('ringDialog').hide()" />
 					</f:facet>
 
 				</p:panelGrid>

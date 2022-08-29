@@ -1,38 +1,28 @@
 package project.email;
 
-import java.util.Properties;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import project.bean.Student;
+import java.util.*;
+import javax.mail.*;
+import javax.mail.internet.*;
 
-public class email {
+public class Email {
 
-	private static String USER_NAME = "universityhtu@gmail.com";
-	private static String PASSWORD = "123456@@";
-	private static Student student;
-	private static String RECIPIENT = student.getStudentEmail();
-	private static String message = student.getMessage();;
+	private static String USER_NAME = "alhusseintechnical@gmail.com";
+	private static String PASSWORD = "gelxnghfwmilqyev";
 
-	public static void sendEmail(String email, String msg) {
+	public static void sendEmail(String mail, String msg) {
 
 		String from = USER_NAME;
 		String pass = PASSWORD;
-		String[] to = { RECIPIENT };
-		String subject = "Personal Interview";
-		String body = message;
+		String[] to = { mail }; // list of recipient email addresses
+		String subject = "Personal Interviews";
+		String body = msg;
 
 		sendFromGMail(from, pass, to, subject, body);
 
-		System.out.println("Email sent successfully");
+		System.out.println("Email sending successfully :  " + mail);
 	}
 
 	private static void sendFromGMail(String from, String pass, String[] to, String subject, String body) {
-
 		Properties props = System.getProperties();
 		String host = "smtp.gmail.com";
 		props.put("mail.smtp.starttls.enable", "true");
@@ -69,6 +59,6 @@ public class email {
 		} catch (MessagingException me) {
 			me.printStackTrace();
 		}
-
 	}
+
 }

@@ -22,19 +22,25 @@
 						<h:outputText value="#{msg.menu_add_university}" />
 					</f:facet>
 
-					<p:outputLabel value="#{msg.lbl_un_id}" for="id"/>
-					<p:inputNumber id="id" value="#{mbAddUniversity.university.universityID}" required="true"
-						requiredMessage="#{msg.msg_required}-#{msg.lbl_un_id}" decimalPlaces="0" decimalSeparator=" " thousandSeparator=" " />
-						
+					<ui:remove>
+						<p:outputLabel value="#{msg.lbl_un_id}" for="id" />
+						<p:inputNumber id="id" value="#{mbAddUniversity.university.universityID}" required="true"
+							requiredMessage="#{msg.msg_required}-#{msg.lbl_un_id}" decimalPlaces="0" decimalSeparator=" " thousandSeparator=" " />
+					</ui:remove>
+
 					<p:outputLabel value="#{msg.lbl_uni_ar_name}" for="arname" />
-					<p:inputText id="arname" value="#{mbAddUniversity.university.universityAname}" required="true" 
+					<p:inputText id="arname" value="#{mbAddUniversity.university.universityAname}" required="true"
 						requiredMessage="#{msg.msg_required}-#{msg.lbl_uni_ar_name}" validatorMessage="#{msg.msg_validator}-#{msg.lbl_uni_ar_name}"
-						maxlength="500" />
+						maxlength="500">
+						<f:validateRegex pattern="[أ-ي ]+" />
+					</p:inputText>
 
 					<p:outputLabel value="#{msg.lbl_uni_en_name}" for="enname" />
 					<p:inputText id="enname" value="#{mbAddUniversity.university.universityEname}" required="true"
 						requiredMessage="#{msg.msg_required}-#{msg.lbl_uni_en_name}" validatorMessage="#{msg.msg_validator}-#{msg.lbl_uni_en_name}"
-						maxlength="500" />
+						maxlength="500">
+						<f:validateRegex pattern="[A-Z a-z ]+" />
+					</p:inputText>
 
 					<f:facet name="footer">
 						<div align="center">

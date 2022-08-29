@@ -70,16 +70,45 @@ public class TrainingCourseDAO {
 		return course;
 	}
 
+	///////////////////////////////////////////////////////////////////////////////////////
+
+	public int selectMaxID() {
+
+		try {
+			db = new Database();
+			connection = db.getConnection();
+			ps = connection.prepareStatement("select nvl (max(COURSE_ID),0) AS COURSE_ID from TRAINING_COURSE ");
+			rs = ps.executeQuery();
+
+			if (rs.next()) {
+				return rs.getInt("COURSE_ID");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			Database.close(rs);
+			Database.close(ps);
+			Database.close(connection);
+		}
+
+		return 0;
+
+	}
 	/////////////////////////////////////////////////////////////////////////////////////////////
 
 	public int insert(TrainingCourse course) {
+
+		int maxId = selectMaxID();
+		System.out.println(maxId);
 		try {
 			db = new Database();
 			connection = db.getConnection();
 			ps = connection.prepareStatement(
 					"insert into Training_Course(course_id, course_aname, course_ename, max_students, short_desc, detailed_desc) values(?, ?, ?, ?, ?, ?)");
 			int counter = 1;
-			ps.setInt(counter++, course.getCourseID());
+			// ps.setInt(counter++, course.getCourseID());
+			ps.setInt(counter++, maxId + 1);
 			ps.setString(counter++, course.getCourseAname());
 			ps.setString(counter++, course.getCourseEname());
 			ps.setInt(counter++, course.getMaxStudent());

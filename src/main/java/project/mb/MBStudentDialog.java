@@ -69,9 +69,9 @@ public class MBStudentDialog {
 	public Student getSelectedStd() {
 		if (selectedStd == null) {
 			selectedStd = new Student();
-			selectedStd.setStudentUni(new University());
+			selectedStd.setStudentUniversity(new University());
 			selectedStd.setStudentSchool(new School());
-			selectedStd.setStudentProg(new Program());
+			selectedStd.setStudentProgram(new Program());
 		}
 		return selectedStd;
 	}
