@@ -15,8 +15,7 @@
 
 					<h:outputText value="#{msg.lbl_student_name}" />
 					<h:panelGroup>
-						<h:outputText value="#{strRes.studentID.studentEname}" />
-						<h:outputText value="#{strRes.studentID.studentAname}" />
+						<h:outputText value="#{mbSec.lang.equals('en')?strRes.studentID.studentEname:strRes.studentID.studentAname}" />
 					</h:panelGroup>
 
 					<h:outputText value="#{msg.lbl_training_course_name}" />

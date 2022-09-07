@@ -93,7 +93,13 @@
 					<p:inputText value="#{mbAddStd.student.studentMaxAverage}" />
 
 					<h:outputText value="#{msg.lbl_rate}:" />
-					<p:inputText value="#{mbAddStd.student.studentRate}" />
+					<p:selectOneMenu id="option" value="#{mbAddStd.student.studentRate}">
+						<f:selectItem itemLabel="#{msg.lbl_select_one}" itemValue="" />
+						<f:selectItem itemLabel="#{msg.menu_acceptable_rate}" itemValue="1" />
+						<f:selectItem itemLabel="#{msg.menu_good_rate}" itemValue="2" />
+						<f:selectItem itemLabel="#{msg.menu_verygood_rate}" itemValue="3" />
+						<f:selectItem itemLabel="#{msg.menu_excellence_rate}" itemValue="4" />
+					</p:selectOneMenu>
 
 					<h:outputText value="#{msg.lbl_graduated_year}:" />
 					<p:inputText value="#{mbAddStd.student.studentGradYear}" />
