@@ -14,39 +14,49 @@
 		format('truetype');
 }
 
-.ui-widget-content {
-	border: 1px solid #082032;
-	background: #000000;
-	color: #FCF8E8;
-}
-
 .ui-widget {
 	font-size: 0.96em;
 	font-family: 'Noto Kufi Arabic', serif;
 }
 
 .ui-widget-header {
-	border: 1px solid #082032;
-	background: #000000;
-	color: #FCF8E8 /*{fcHeader}*/;
+	color: white;
 	font-weight: bold;
 }
 
-.ui-state-default {
-	border: 1px solid #082032 /*{borderColorDefault}*/;
-	background: #FCF8E8;
-	font-weight: normal;
-	color: #082032;
+.settingsButtonAR {
+	padding-top: 100px;
+	float: left;
+	overflow: hidden;
 }
 
-.ui-state-default {
-	background: #082032;
-	font-weight: bold;
-	color: #FCF8E8;
+.settingsButtonEN {
+	padding-top: 100px;
+	float: right;
+	overflow: hidden;
 }
 
 .ui-panel-title {
 	margin: 0.1em 0px 0.2em 0;
+}
+
+.ui-panel .ui-panel-footer {
+	text-align: center;
+	border: 1px solid #2c4359;
+	background: #35414f
+		url(/upskillingapp/javax.faces.resource/images/ui-bg_dots-small_35_35414f_2x2.png.xhtml?ln=primefaces-hot-sneaks)
+		50% 50% repeat;
+	color: #ffffff;
+	font-weight: bold;
+}
+
+.ui-panel-no-border {
+   border: none;
+   padding-top: 0px
+}
+
+.ui-menubar {
+    padding-top: 10px !important;
 }
 
 .ui-growl {
@@ -54,17 +64,8 @@
 	margin-right: -150px;
 }
 
-.ui-menuitem-text {
-	color: #FCF8E8;
-}
-
 .ui-menubar {
 	padding-top: 35px;
-	border-color: #000000;
-}
-
-.loginform {
-	border-radius: 3px #FCF8E8;
 }
 
 .ui-menu-en {
@@ -190,44 +191,4 @@
 .search {
 	text-align: left;
 	padding-bottom: 10px;
-}
-
-.fafooter {
-	margin-left: 20px;
-	padding-left: 560px;
-	margin-bottom: 20px;
-}
-
-.fa-facebook:hover {
-	color: #10237c;
-}
-
-.fa-windows:hover {
-	color: #ffffff;
-}
-
-.fa-twitter:hover {
-	color: #1784d5;
-}
-
-.fa-youtube:hover {
-	color: #e01414;
-}
-
-.fa-linkedin:hover {
-	color: #11639f;
-}
-
-.fa-instagram:hover {
-	color: #b6346b;
-}
-
-.footer {
-	padding-left: 589px;
-	color: #FCF8E8;
-}
-
-.footertxt {
-	padding-left: 540px;
-	color: #FCF8E8;
 }

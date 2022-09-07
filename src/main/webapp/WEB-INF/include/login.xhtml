@@ -3,6 +3,18 @@
 
 	<h:form id="loginform">
 
+		<p:menubar styleClass="#{mbSec.lang.equals('ar')?'ui-menu-ar':'ui-menu-en'}">
+			<p:submenu label=" HTU  ">
+				<p:menuitem value="#{msg.lbl_about}" url="https://www.htu.edu.jo/about-us.html" target="_blank" />
+				<p:menuitem value="#{msg.lbl_upskilling}" url="https://www.htu.edu.jo/UP-SKILLING.html" target="_blank" />
+				<p:menuitem value="#{msg.lbl_gallery}" url="https://www.htu.edu.jo/gallery.html" target="_blank" />
+			</p:submenu>
+
+			<p:menuitem value="#{msg.lbl_e_learning}" url="https://elearning.htu.edu.jo/login/index.php" target="_blank" />
+			<p:menuitem value="#{msg.lbl_employee_portal}" url="https://eis.htu.edu.jo/" target="_blank" />
+			<p:menuitem value="#{msg.lbl_student_portal}" url="https://sis.htu.edu.jo/" target="_blank" />
+		</p:menubar>
+
 		<div align="center">
 
 			<p:spacer height="100" />
@@ -18,18 +30,13 @@
 					validatorMessage="#{msg.msg_validator}-#{msg.lbl_username}" />
 
 				<p:outputLabel value="#{msg.lbl_password}" />
-				<p:password value="#{mbSec.password}" feedback="true" required="true" requiredMessage="#{msg.msg_required}-#{msg.lbl_password}"
+				<p:password value="#{mbSec.password}" required="true" requiredMessage="#{msg.msg_required}-#{msg.lbl_password}"
 					validatorMessage="#{msg.msg_validator}-#{msg.lbl_password}" />
 
-				<f:facet name="footer">
-					<p:commandButton value="#{msg.btn_login}" action="#{mbSec.checkUser()}" ajax="false" />
-					<p:commandButton value="#{msg.btn_reset}" type="reset" />
-					<p:selectOneRadio value="#{mbSec.lang}" onchange="submit()" valueChangeListener="#{mbSec.localeChanged}">
-						<f:selectItems value="#{mbSec.countries}" />
-					</p:selectOneRadio>
-				</f:facet>
-
 			</p:panelGrid>
+			<p:separator />
+			<p:commandButton value="#{msg.btn_login}" action="#{mbSec.checkUser()}" ajax="false" />
+			<p:commandButton value="#{msg.btn_reset}" type="reset" />
 		</div>
 	</h:form>
 

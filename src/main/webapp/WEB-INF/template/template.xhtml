@@ -10,9 +10,6 @@
 			</ui:insert></title>
 
 		<link rel="icon" type="image/png" href="#{resource['icons/icon.png']}" />
-
-
-
 	</h:head>
 
 	<h:body dir="#{mbSec.dir}">
@@ -22,7 +19,6 @@
 		<p:panel id="pnl" style="min-height: 400px;">
 
 			<ui:include src="/WEB-INF/include/header.xhtml" />
-
 
 			<p:panel id="contentPnl" rendered="#{mbSec.login}" style="min-height: 400px;">
 
@@ -36,11 +32,21 @@
 
 			</p:panel>
 
-			<p:panel id="loginPnl" rendered="#{!mbSec.login}" style="min-height: 400px;">
+			<p:panel id="loginPnl" rendered="#{!mbSec.login}" styleClass="ui-panel-no-border" style="min-height: 400px;">
 				<ui:include src="/WEB-INF/include/login.xhtml" />
 			</p:panel>
 
 			<ui:include src="/WEB-INF/include/footer.xhtml" />
+		</p:panel>
+		<p:panel styleClass="ui-panel-no-border">
+			<p:menubar styleClass="ui-panel-no-border">
+				<p:menuitem value="" url="https://www.facebook.com/HTUjo/" target="_blank" icon="fa fa-facebook" />
+				<p:menuitem value="" url="https://login.microsoftonline.com/?whr=htu.edu.jo" target="_blank" icon="fa fa-windows" />
+				<p:menuitem value="" url="https://twitter.com/htujo?lang=en" target="_blank" icon="fa fa-twitter" />
+				<p:menuitem value="" url="https://www.youtube.com/channel/UC-DXAAHuMg7k7mss7uFskzQ" target="_blank" icon="fa fa-youtube" />
+				<p:menuitem value="" url="https://jo.linkedin.com/company/al-hussein-technical-university" target="_blank" icon="fa fa-linkedin" />
+				<p:menuitem value="" url="https://www.instagram.com/htujo/?hl=en" target="_blank" icon="fa fa-instagram" />
+			</p:menubar>
 		</p:panel>
 	</h:body>
 </f:view>

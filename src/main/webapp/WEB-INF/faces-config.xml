@@ -6,7 +6,6 @@
 
 
 	<application>
-
 		<locale-config>
 			<default-locale>en</default-locale>
 			<supported-locale>ar</supported-locale>
@@ -17,6 +16,5 @@
 			<var>msg</var>
 		</resource-bundle>
 	</application>
-
 
 </faces-config>

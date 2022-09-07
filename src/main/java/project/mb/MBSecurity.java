@@ -1,13 +1,11 @@
 package project.mb;
 
-import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ValueChangeEvent;
 
 import util.Message;
 
@@ -22,16 +20,11 @@ public class MBSecurity {
 	private String lang = "en";
 	private Locale locale = Locale.ENGLISH;
 	private String dir = "ltr";
+
 	private static Map<String, Object> countries;
 
-	static {
-		countries = new LinkedHashMap<String, Object>();
-		countries.put("English", Locale.ENGLISH);
-		countries.put("عربي", new Locale("ar"));
-	}
-
 	public String checkUser() {
-		if (username.equalsIgnoreCase("ola") && password.equals("java2022")) {
+		if ((username.equalsIgnoreCase("ola") && password.equals("java2022")) || (username.equalsIgnoreCase("java") && password.equals("Java@2022"))) {
 			login = true;
 			return "/home.xhtml";
 		} else {
@@ -43,19 +36,33 @@ public class MBSecurity {
 
 	public String logout() {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		lang = "en";
 		return "/home.xhtml?faces-redirect=true";
 	}
 
-	public void localeChanged(ValueChangeEvent e) {
-		lang = e.getNewValue().toString();
-		for (Map.Entry<String, Object> entry : countries.entrySet()) {
-			if (entry.getValue().toString().equals(lang)) {
-				locale = lang.equals("en") ? Locale.ENGLISH : new Locale(lang);
-				FacesContext.getCurrentInstance().getViewRoot().setLocale((Locale) entry.getValue());
-				dir = lang.equals("ar") ? "rtl" : "ltr";
-			}
+	public String changeLanguage() {
+		if (lang.equals("ar")) {
+			lang = "en";
+		} else {
+			lang = "ar";
 		}
+
+		locale = lang.equals("en") ? Locale.ENGLISH : new Locale(lang);
+		dir = lang.equals("ar") ? "rtl" : "ltr";
+
+		return null;
 	}
+
+//	public void localeChanged(ValueChangeEvent e) {
+//		lang = e.getNewValue().toString();
+//		for (Map.Entry<String, Object> entry : countries.entrySet()) {
+//			if (entry.getValue().toString().equals(lang)) {
+//				locale = lang.equals("en") ? Locale.ENGLISH : new Locale(lang);
+//				FacesContext.getCurrentInstance().getViewRoot().setLocale((Locale) entry.getValue());
+//				dir = lang.equals("ar") ? "rtl" : "ltr";
+//			}
+//		}
+//	}
 
 	public String getUsername() {
 		return username;

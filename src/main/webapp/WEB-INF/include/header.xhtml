@@ -2,23 +2,19 @@
 	xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui">
 
 	<f:facet name="header">
+		<h:form id="headerform">
 
-		<p:panelGrid columns="10" layout="grid">
-			<h:graphicImage value="/resources/images/HTU.png" style="width:220px"></h:graphicImage>
+			<div>
 
-			<p:menubar styleClass="#{mbSec.lang.equals('ar')?'ui-menu-ar':'ui-menu-en'}">
+				<h:graphicImage value="/resources/images/LogoEN_UpSk.png" rendered="#{mbSec.lang.equals('en')}" />
+				<h:graphicImage value="/resources/images/HTU.png" rendered="#{mbSec.lang.equals('ar')}" width="200px" />
 
-				<p:submenu label=" HTU  ">
-					<p:menuitem value="#{msg.lbl_about}" url="https://www.htu.edu.jo/about-us.html" target="_blank" />
-					<p:menuitem value="#{msg.lbl_upskilling}" url="https://www.htu.edu.jo/UP-SKILLING.html" target="_blank" />
-					<p:menuitem value="#{msg.lbl_gallery}" url="https://www.htu.edu.jo/gallery.html" target="_blank" />
-				</p:submenu>
+				<div class="#{mbSec.lang.equals('ar')?'settingsButtonAR':'settingsButtonEN'}">
+					<p:commandLink value="#{msg.link_languages}" action="#{mbSec.changeLanguage()}" ajax="false" style="color: white;" />
+				</div>
+			</div>
 
-				<p:menuitem value="#{msg.lbl_e_learning}" url="https://elearning.htu.edu.jo/login/index.php" target="_blank" />
-				<p:menuitem value="#{msg.lbl_employee_portal}" url="https://eis.htu.edu.jo/" target="_blank" />
-				<p:menuitem value="#{msg.lbl_student_portal}" url="https://sis.htu.edu.jo/" target="_blank" />
-			</p:menubar>
-		</p:panelGrid>
+		</h:form>
 	</f:facet>
 
 	<p:growl showDetail="true">

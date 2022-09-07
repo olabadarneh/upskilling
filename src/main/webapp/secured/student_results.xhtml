@@ -9,13 +9,15 @@
 		<br />
 
 		<h:form id="form">
-			<p:carousel value="#{mbStdResult.stdResTable}" headerText="Student Results" var="strRes"
+			<p:carousel value="#{mbStdResult.stdResTable}" headerText="Student Results" var="strRes" responsive="true"
 				itemStyle="width:200px;height:200px;text-align:center" numVisible="1" easing="easeOutBounce" cricular="true">
 				<h:panelGrid columns="2" style="width:100%" columnClasses="label,value">
 
-
 					<h:outputText value="#{msg.lbl_student_name}" />
-					<h:outputText value="#{mbSec.lang.equals('en')? strRes.studentID.studentEname: strRes.studentID.studentAname}" />
+					<h:panelGroup>
+						<h:outputText value="#{strRes.studentID.studentEname}" />
+						<h:outputText value="#{strRes.studentID.studentAname}" />
+					</h:panelGroup>
 
 					<h:outputText value="#{msg.lbl_training_course_name}" />
 					<h:outputText value="#{mbSec.lang.equals('en')? strRes.trainingCourseID.courseEname : strRes.trainingCourseID.courseAname}" />
